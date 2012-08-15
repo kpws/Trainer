@@ -1,0 +1,417 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     18294,        408]
+NotebookOptionsPosition[     17940,        391]
+NotebookOutlinePosition[     18276,        406]
+CellTagsIndexPosition[     18233,        403]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"withSpaces", "[", "s_", "]"}], ":=", 
+  RowBox[{"StringJoin", "[", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Join", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"Characters", "[", "s", "]"}], "[", 
+        RowBox[{"[", "1", "]"}], "]"}], "}"}], ",", 
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{"UpperCaseQ", "[", 
+           RowBox[{
+            RowBox[{"Characters", "[", "s", "]"}], "[", 
+            RowBox[{"[", "i", "]"}], "]"}], "]"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"\"\< \>\"", ",", 
+            RowBox[{
+             RowBox[{"Characters", "[", "s", "]"}], "[", 
+             RowBox[{"[", "i", "]"}], "]"}]}], "}"}], ",", 
+          RowBox[{
+           RowBox[{"Characters", "[", "s", "]"}], "[", 
+           RowBox[{"[", "i", "]"}], "]"}]}], "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"i", ",", "2", ",", 
+          RowBox[{"Length", "[", 
+           RowBox[{"Characters", "[", "s", "]"}], "]"}]}], "}"}]}], "]"}]}], 
+     "]"}], "]"}], "]"}]}]], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Table", "[", 
+  RowBox[{
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"Export", "[", 
+      RowBox[{
+       RowBox[{
+       "\"\</home/petter/projects/Trainer/data/countries/\>\"", "<>", "cont", 
+        "<>", "\"\<_\>\"", "<>", 
+        RowBox[{"withSpaces", "[", "i", "]"}], "<>", "\"\<.png\>\""}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"Graphics", "[", 
+        RowBox[{
+         RowBox[{"Join", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{
+             RowBox[{"{", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+              RowBox[{
+               RowBox[{"EdgeForm", "[", "Black", "]"}], ",", 
+               RowBox[{"Catch", "[", 
+                RowBox[{"If", "[", 
+                 RowBox[{
+                  RowBox[{"#", "\[Equal]", "i"}], ",", 
+                  RowBox[{"RGBColor", "[", 
+                   RowBox[{"0.1", ",", "0.8", ",", "0.1"}], "]"}], ",", 
+                  RowBox[{"RGBColor", "[", 
+                   RowBox[{"0.3", ",", "0.3", ",", "0.3"}], "]"}]}], "]"}], 
+                "]"}], ",", 
+               RowBox[{"CountryData", "[", 
+                RowBox[{"#", ",", "\"\<Polygon\>\""}], "]"}]}], 
+              "\[IndentingNewLine]", "\[IndentingNewLine]", 
+              "\[IndentingNewLine]", "}"}], "&"}], "/@", 
+            RowBox[{"CountryData", "[", "cont", "]"}]}], ",", 
+           "\[IndentingNewLine]", 
+           RowBox[{"If", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"CountryData", "[", 
+               RowBox[{"i", ",", "\"\<Area\>\""}], "]"}], "<", "1500"}], ",", 
+             "\[IndentingNewLine]", 
+             RowBox[{"{", 
+              RowBox[{"Inset", "[", 
+               RowBox[{
+                RowBox[{"Graphics", "[", 
+                 RowBox[{"{", 
+                  RowBox[{"Green", ",", 
+                   RowBox[{"Thickness", "[", "0.01", "]"}], ",", 
+                   RowBox[{"Line", "[", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"-", "1"}], ",", "0"}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"1", ",", "0"}], "}"}]}], "}"}], "]"}], ",", 
+                   RowBox[{"Line", "[", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", 
+                    RowBox[{"-", "1"}]}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", "1"}], "}"}]}], "}"}], "]"}]}], "}"}], 
+                 "]"}], ",", 
+                RowBox[{"Reverse", "[", 
+                 RowBox[{"CountryData", "[", 
+                  RowBox[{"i", ",", "\"\<CenterCoordinates\>\""}], "]"}], 
+                 "]"}]}], "]"}], "}"}], ",", "\[IndentingNewLine]", 
+             RowBox[{"{", "}"}]}], "]"}]}], "\[IndentingNewLine]", 
+          "\[IndentingNewLine]", "]"}], ",", 
+         RowBox[{"ImageSize", "\[Rule]", "2000"}]}], "]"}]}], "]"}], 
+     "\[IndentingNewLine]", ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", 
+       RowBox[{"Select", "[", 
+        RowBox[{
+         RowBox[{"CountryData", "[", "cont", "]"}], ",", 
+         RowBox[{
+          RowBox[{
+           RowBox[{
+            RowBox[{"CountryData", "[", 
+             RowBox[{"#", ",", "\"\<Population\>\""}], "]"}], ">", 
+            RowBox[{"10", "*", 
+             RowBox[{"10", "^", "6"}]}]}], "||", 
+           RowBox[{"cont", "\[Equal]", "\"\<Europe\>\""}]}], " ", "&"}]}], 
+        "]"}]}], "}"}]}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"cont", ",", 
+     RowBox[{"Select", "[", 
+      RowBox[{
+       RowBox[{"CountryData", "[", "\"\<Continents\>\"", "]"}], ",", 
+       RowBox[{
+        RowBox[{"#", "\[NotEqual]", "\"\<Antarctica\>\""}], "&"}]}], "]"}]}], 
+    "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.553774050602192*^9, 3.553774058374564*^9}, {
+   3.553774130849827*^9, 3.553774144419339*^9}, {3.553774186641814*^9, 
+   3.553774214478158*^9}, {3.553774463739027*^9, 3.553774497174621*^9}, {
+   3.553774604435761*^9, 3.5537746368222933`*^9}, {3.5537746715675097`*^9, 
+   3.553774672236891*^9}, {3.553774705408208*^9, 3.5537747244587593`*^9}, {
+   3.553774915045578*^9, 3.553774916697115*^9}, 3.5537750716332693`*^9, {
+   3.553775134470632*^9, 3.5537752066294413`*^9}, {3.553775263531084*^9, 
+   3.553775297037161*^9}, {3.553775328531744*^9, 3.553775383735086*^9}, {
+   3.553775439932371*^9, 3.5537754958072968`*^9}, {3.55377553220228*^9, 
+   3.5537756387399282`*^9}, {3.5537758096167307`*^9, 3.553775831394328*^9}, 
+   3.5537759906538773`*^9, {3.553776024219939*^9, 3.5537760288941317`*^9}, {
+   3.5537762550646353`*^9, 3.553776309467113*^9}, {3.5537766215123863`*^9, 
+   3.5537766995118732`*^9}, 3.553777173940914*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"\<\"/home/petter/projects/Trainer/data/countries/Africa_Algeria.\
+png\"\>", 
+     ",", "\<\"/home/petter/projects/Trainer/data/countries/Africa_Angola.png\
+\"\>", ",", "\<\"/home/petter/projects/Trainer/data/countries/Africa_Burkina \
+Faso.png\"\>", 
+     ",", "\<\"/home/petter/projects/Trainer/data/countries/Africa_Cameroon.\
+png\"\>", 
+     ",", "\<\"/home/petter/projects/Trainer/data/countries/Africa_Chad.png\"\
+\>", ",", "\<\"/home/petter/projects/Trainer/data/countries/Africa_Democratic \
+Republic Congo.png\"\>", 
+     ",", "\<\"/home/petter/projects/Trainer/data/countries/Africa_Egypt.png\"\
+\>", ",", \
+"\<\"/home/petter/projects/Trainer/data/countries/Africa_Ethiopia.png\"\>", 
+     ",", "\<\"/home/petter/projects/Trainer/data/countries/Africa_Ghana.png\"\
+\>", ",", "\<\"/home/petter/projects/Trainer/data/countries/Africa_Guinea.png\
+\"\>", ",", "\<\"/home/petter/projects/Trainer/data/countries/Africa_Ivory \
+Coast.png\"\>", 
+     ",", "\<\"/home/petter/projects/Trainer/data/countries/Africa_Kenya.png\"\
+\>", ",", \
+"\<\"/home/petter/projects/Trainer/data/countries/Africa_Madagascar.png\"\>", 
+     ",", "\<\"/home/petter/projects/Trainer/data/countries/Africa_Malawi.png\
+\"\>", ",", "\<\"/home/petter/projects/Trainer/data/countries/Africa_Mali.png\
+\"\>", ",", \
+"\<\"/home/petter/projects/Trainer/data/countries/Africa_Morocco.png\"\>", 
+     ",", "\<\"/home/petter/projects/Trainer/data/countries/Africa_Mozambique.\
+png\"\>", 
+     ",", "\<\"/home/petter/projects/Trainer/data/countries/Africa_Niger.png\"\
+\>", ",", \
+"\<\"/home/petter/projects/Trainer/data/countries/Africa_Nigeria.png\"\>", 
+     ",", "\<\"/home/petter/projects/Trainer/data/countries/Africa_Rwanda.png\
+\"\>", ",", \
+"\<\"/home/petter/projects/Trainer/data/countries/Africa_Senegal.png\"\>", 
+     ",", "\<\"/home/petter/projects/Trainer/data/countries/Africa_South \
+Africa.png\"\>", 
+     ",", "\<\"/home/petter/projects/Trainer/data/countries/Africa_Sudan.png\"\
+\>", ",", \
+"\<\"/home/petter/projects/Trainer/data/countries/Africa_Tanzania.png\"\>", 
+     ",", "\<\"/home/petter/projects/Trainer/data/countries/Africa_Tunisia.\
+png\"\>", 
+     ",", "\<\"/home/petter/projects/Trainer/data/countries/Africa_Uganda.png\
+\"\>", ",", \
+"\<\"/home/petter/projects/Trainer/data/countries/Africa_Zambia.png\"\>", 
+     ",", "\<\"/home/petter/projects/Trainer/data/countries/Africa_Zimbabwe.\
+png\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"/home/petter/projects/Trainer/data/countries/Asia_\
+Afghanistan.png\"\>", 
+     ",", "\<\"/home/petter/projects/Trainer/data/countries/Asia_Bangladesh.\
+png\"\>", 
+     ",", "\<\"/home/petter/projects/Trainer/data/countries/Asia_Cambodia.png\
+\"\>", ",", \
+"\<\"/home/petter/projects/Trainer/data/countries/Asia_China.png\"\>", 
+     ",", "\<\"/home/petter/projects/Trainer/data/countries/Asia_India.png\"\>\
+", ",", "\<\"/home/petter/projects/Trainer/data/countries/Asia_Indonesia.png\"\
+\>", ",", \
+"\<\"/home/petter/projects/Trainer/data/countries/Asia_Iran.png\"\>", 
+     ",", "\<\"/home/petter/projects/Trainer/data/countries/Asia_Iraq.png\"\>\
+", ",", "\<\"/home/petter/projects/Trainer/data/countries/Asia_Japan.png\"\>",
+      ",", "\<\"/home/petter/projects/Trainer/data/countries/Asia_Kazakhstan.\
+png\"\>", 
+     ",", "\<\"/home/petter/projects/Trainer/data/countries/Asia_Malaysia.png\
+\"\>", ",", \
+"\<\"/home/petter/projects/Trainer/data/countries/Asia_Myanmar.png\"\>", 
+     ",", "\<\"/home/petter/projects/Trainer/data/countries/Asia_Nepal.png\"\>\
+", ",", "\<\"/home/petter/projects/Trainer/data/countries/Asia_North \
+Korea.png\"\>", 
+     ",", "\<\"/home/petter/projects/Trainer/data/countries/Asia_Pakistan.png\
+\"\>", ",", \
+"\<\"/home/petter/projects/Trainer/data/countries/Asia_Philippines.png\"\>", 
+     ",", "\<\"/home/petter/projects/Trainer/data/countries/Asia_Russia.png\"\
+\>", ",", "\<\"/home/petter/projects/Trainer/data/countries/Asia_Saudi \
+Arabia.png\"\>", 
+     ",", "\<\"/home/petter/projects/Trainer/data/countries/Asia_South \
+Korea.png\"\>", 
+     ",", "\<\"/home/petter/projects/Trainer/data/countries/Asia_Sri \
+Lanka.png\"\>", 
+     ",", "\<\"/home/petter/projects/Trainer/data/countries/Asia_Syria.png\"\>\
+", ",", "\<\"/home/petter/projects/Trainer/data/countries/Asia_Taiwan.png\"\>\
+", ",", "\<\"/home/petter/projects/Trainer/data/countries/Asia_Thailand.png\"\
+\>", ",", "\<\"/home/petter/projects/Trainer/data/countries/Asia_Turkey.png\"\
+\>", ",", \
+"\<\"/home/petter/projects/Trainer/data/countries/Asia_Uzbekistan.png\"\>", 
+     ",", "\<\"/home/petter/projects/Trainer/data/countries/Asia_Vietnam.png\"\
+\>", ",", \
+"\<\"/home/petter/projects/Trainer/data/countries/Asia_Yemen.png\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"/home/petter/projects/Trainer/data/countries/Europe_Albania.\
+png\"\>", 
+     ",", "\<\"/home/petter/projects/Trainer/data/countries/Europe_Andorra.\
+png\"\>", 
+     ",", "\<\"/home/petter/projects/Trainer/data/countries/Europe_Austria.\
+png\"\>", 
+     ",", "\<\"/home/petter/projects/Trainer/data/countries/Europe_Belarus.\
+png\"\>", 
+     ",", "\<\"/home/petter/projects/Trainer/data/countries/Europe_Belgium.\
+png\"\>", 
+     ",", "\<\"/home/petter/projects/Trainer/data/countries/Europe_Bosnia \
+Herzegovina.png\"\>", 
+     ",", "\<\"/home/petter/projects/Trainer/data/countries/Europe_Bulgaria.\
+png\"\>", 
+     ",", "\<\"/home/petter/projects/Trainer/data/countries/Europe_Croatia.\
+png\"\>", 
+     ",", "\<\"/home/petter/projects/Trainer/data/countries/Europe_Cyprus.png\
+\"\>", ",", "\<\"/home/petter/projects/Trainer/data/countries/Europe_Czech \
+Republic.png\"\>", 
+     ",", "\<\"/home/petter/projects/Trainer/data/countries/Europe_Denmark.\
+png\"\>", 
+     ",", "\<\"/home/petter/projects/Trainer/data/countries/Europe_Estonia.\
+png\"\>", 
+     ",", "\<\"/home/petter/projects/Trainer/data/countries/Europe_Faroe \
+Islands.png\"\>", 
+     ",", "\<\"/home/petter/projects/Trainer/data/countries/Europe_Finland.\
+png\"\>", 
+     ",", "\<\"/home/petter/projects/Trainer/data/countries/Europe_France.png\
+\"\>", ",", \
+"\<\"/home/petter/projects/Trainer/data/countries/Europe_Germany.png\"\>", 
+     ",", "\<\"/home/petter/projects/Trainer/data/countries/Europe_Gibraltar.\
+png\"\>", 
+     ",", "\<\"/home/petter/projects/Trainer/data/countries/Europe_Greece.png\
+\"\>", ",", \
+"\<\"/home/petter/projects/Trainer/data/countries/Europe_Guernsey.png\"\>", 
+     ",", "\<\"/home/petter/projects/Trainer/data/countries/Europe_Hungary.\
+png\"\>", 
+     ",", "\<\"/home/petter/projects/Trainer/data/countries/Europe_Iceland.\
+png\"\>", 
+     ",", "\<\"/home/petter/projects/Trainer/data/countries/Europe_Ireland.\
+png\"\>", 
+     ",", "\<\"/home/petter/projects/Trainer/data/countries/Europe_Isle Of \
+Man.png\"\>", 
+     ",", "\<\"/home/petter/projects/Trainer/data/countries/Europe_Italy.png\"\
+\>", ",", "\<\"/home/petter/projects/Trainer/data/countries/Europe_Jersey.png\
+\"\>", ",", \
+"\<\"/home/petter/projects/Trainer/data/countries/Europe_Kosovo.png\"\>", 
+     ",", "\<\"/home/petter/projects/Trainer/data/countries/Europe_Latvia.png\
+\"\>", ",", \
+"\<\"/home/petter/projects/Trainer/data/countries/Europe_Liechtenstein.png\"\>\
+", ",", "\<\"/home/petter/projects/Trainer/data/countries/Europe_Lithuania.\
+png\"\>", 
+     ",", "\<\"/home/petter/projects/Trainer/data/countries/Europe_Luxembourg.\
+png\"\>", 
+     ",", "\<\"/home/petter/projects/Trainer/data/countries/Europe_Macedonia.\
+png\"\>", 
+     ",", "\<\"/home/petter/projects/Trainer/data/countries/Europe_Malta.png\"\
+\>", ",", \
+"\<\"/home/petter/projects/Trainer/data/countries/Europe_Moldova.png\"\>", 
+     ",", "\<\"/home/petter/projects/Trainer/data/countries/Europe_Monaco.png\
+\"\>", ",", \
+"\<\"/home/petter/projects/Trainer/data/countries/Europe_Montenegro.png\"\>", 
+     ",", "\<\"/home/petter/projects/Trainer/data/countries/Europe_\
+Netherlands.png\"\>", 
+     ",", "\<\"/home/petter/projects/Trainer/data/countries/Europe_Norway.png\
+\"\>", ",", \
+"\<\"/home/petter/projects/Trainer/data/countries/Europe_Poland.png\"\>", 
+     ",", "\<\"/home/petter/projects/Trainer/data/countries/Europe_Portugal.\
+png\"\>", 
+     ",", "\<\"/home/petter/projects/Trainer/data/countries/Europe_Romania.\
+png\"\>", 
+     ",", "\<\"/home/petter/projects/Trainer/data/countries/Europe_San \
+Marino.png\"\>", 
+     ",", "\<\"/home/petter/projects/Trainer/data/countries/Europe_Serbia.png\
+\"\>", ",", \
+"\<\"/home/petter/projects/Trainer/data/countries/Europe_Slovakia.png\"\>", 
+     ",", "\<\"/home/petter/projects/Trainer/data/countries/Europe_Slovenia.\
+png\"\>", 
+     ",", "\<\"/home/petter/projects/Trainer/data/countries/Europe_Spain.png\"\
+\>", ",", \
+"\<\"/home/petter/projects/Trainer/data/countries/Europe_Svalbard.png\"\>", 
+     ",", "\<\"/home/petter/projects/Trainer/data/countries/Europe_Sweden.png\
+\"\>", ",", \
+"\<\"/home/petter/projects/Trainer/data/countries/Europe_Switzerland.png\"\>",
+      ",", "\<\"/home/petter/projects/Trainer/data/countries/Europe_Ukraine.\
+png\"\>", 
+     ",", "\<\"/home/petter/projects/Trainer/data/countries/Europe_United \
+Kingdom.png\"\>", 
+     ",", "\<\"/home/petter/projects/Trainer/data/countries/Europe_Vatican \
+City.png\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"/home/petter/projects/Trainer/data/countries/NorthAmerica_\
+Canada.png\"\>", 
+     ",", "\<\"/home/petter/projects/Trainer/data/countries/NorthAmerica_Cuba.\
+png\"\>", 
+     ",", "\<\"/home/petter/projects/Trainer/data/countries/NorthAmerica_\
+Dominican Republic.png\"\>", 
+     ",", "\<\"/home/petter/projects/Trainer/data/countries/NorthAmerica_\
+Guatemala.png\"\>", 
+     ",", "\<\"/home/petter/projects/Trainer/data/countries/NorthAmerica_\
+Haiti.png\"\>", 
+     ",", "\<\"/home/petter/projects/Trainer/data/countries/NorthAmerica_\
+Mexico.png\"\>", 
+     ",", "\<\"/home/petter/projects/Trainer/data/countries/NorthAmerica_\
+United States.png\"\>"}], "}"}], ",", 
+   RowBox[{
+   "{", "\<\"/home/petter/projects/Trainer/data/countries/Oceania_Australia.\
+png\"\>", "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"/home/petter/projects/Trainer/data/countries/SouthAmerica_\
+Argentina.png\"\>", 
+     ",", "\<\"/home/petter/projects/Trainer/data/countries/SouthAmerica_\
+Bolivia.png\"\>", 
+     ",", "\<\"/home/petter/projects/Trainer/data/countries/SouthAmerica_\
+Brazil.png\"\>", 
+     ",", "\<\"/home/petter/projects/Trainer/data/countries/SouthAmerica_\
+Chile.png\"\>", 
+     ",", "\<\"/home/petter/projects/Trainer/data/countries/SouthAmerica_\
+Colombia.png\"\>", 
+     ",", "\<\"/home/petter/projects/Trainer/data/countries/SouthAmerica_\
+Ecuador.png\"\>", 
+     ",", "\<\"/home/petter/projects/Trainer/data/countries/SouthAmerica_Peru.\
+png\"\>", 
+     ",", "\<\"/home/petter/projects/Trainer/data/countries/SouthAmerica_\
+Venezuela.png\"\>"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.5537740704482937`*^9, {3.553774141209032*^9, 3.553774159066168*^9}, 
+   3.553774192850594*^9, 3.5537742237512207`*^9, 3.553774638031063*^9, 
+   3.553774725693087*^9, {3.553775157932365*^9, 3.5537751737673197`*^9}, 
+   3.553775299899791*^9, 3.553775385345612*^9, 3.55377544405306*^9, 
+   3.5537754970292788`*^9, 3.553775554616159*^9, 3.5537756399616013`*^9, 
+   3.5537759662446737`*^9, 3.553776229368765*^9, 3.5537764964181004`*^9, 
+   3.5537768907200336`*^9, 3.553777368335146*^9}]
+}, Open  ]]
+},
+WindowSize->{1366, 751},
+WindowMargins->{{0, Automatic}, {0, Automatic}},
+FrontEndVersion->"8.0 for Linux x86 (64-bit) (February 23, 2011)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 1119, 31, 129, "Input"],
+Cell[CellGroupData[{
+Cell[1701, 55, 4816, 108, 359, "Input"],
+Cell[6520, 165, 11404, 223, 2820, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

@@ -16,10 +16,12 @@ class Putonghua(question.Question):
 
     def __call__(self):
         printInCol('yellow',self.char)
-        if raw_input()==self.english:
+        inp=raw_input()
+        if inp.lower()==self.english.lower():
             ret = True
+            printInCol('green','Correct!')
         else:
-            printInCol('red','Wrong, the correct answer is '+self.english)
+            printInCol('red','Wrong, the correct answer is '+self.english+'.')
             ret = False
         printInCol('blue','Pinyin: '+self.pinyin)
         return ret

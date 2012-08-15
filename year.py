@@ -17,9 +17,10 @@ class Year(question.Question):
         printInCol('yellow',self._event)
         if raw_input()==self._year:
             ret = True
+            printInCol('green','Correct!')
         else:
             printInCol('red','Wrong, the correct answer is '+self._year)
             ret = False
         return ret
     def getId(self):
-        return 'years/'+self._event
+        return 'year/'+self._event

@@ -1,4 +1,0 @@
-Trainer
-=======
-
-Generic training program
