@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+#File made by Alexander Mostovenko, edited by petter
 """
 Module for voicing string data.
 """
@@ -6,8 +7,6 @@ import urllib
 import urllib2
 import subprocess
 import os
-from speaker import Speaker
-
 #----------------------------------------------------------------------
 def get_google_voice(phrase,language,file_name):
     """

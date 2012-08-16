@@ -1,6 +1,6 @@
 import os
 from colorPrint import printInCol
-from speak.voice2 import get_google_voice
+from voice import get_google_voice
 
 def charToFileName(c):
     return reduce(lambda a,b:a+b,[str(ord(x))+'_' for x in c])[:-1]+'.mp3'
