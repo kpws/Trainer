@@ -5,9 +5,10 @@ from colorPrint import printInCol
 from makePListenSounds import charToFileName
 class PutonghuaListen(question.Question):
     def __init__(self, char, pinyin, english):
-        self.char=char
-        self.english=english
-        self.pinyin=pinyin
+        self._char=char
+        self._answer=english
+        self._message='Character: '+char+'\nPinyin: '+pinyin
+        self._pinyin=pinyin
 
     @staticmethod
     def getQuestions():
@@ -16,27 +17,13 @@ class PutonghuaListen(question.Question):
         r=[]
         u=[]
         for il in l:
-            if not il.pinyin in u:
-                u.append(il.pinyin)
+            if not il._pinyin in u:
+                u.append(il._pinyin)
                 r.append(il)
         return r
-    def __call__(self):
-        while True:
-            subprocess.Popen(('mpg123','data/putonghuaListen/'+charToFileName(self.char)),
-                    stdout = subprocess.PIPE, stderr = subprocess.PIPE)
-            inp=raw_input()
-            if inp==':again':
-                continue
-            elif inp==self.english:
-                ret = True
-                printInCol('green','Correct!')
-                break
-            else:
-                printInCol('red','Wrong, the correct answer is '+self.english)
-                ret = False
-                break
-        printInCol('blue','Pinyin: '+self.pinyin)
-        printInCol('blue','Character: '+self.char)
-        return ret
+    def pose(self):
+        path=os.path.dirname(__file__)
+        subprocess.Popen(('mpg123',path+'/data/putonghuaListen/'+charToFileName(self._char)),
+                stdout = subprocess.PIPE, stderr = subprocess.PIPE)
     def getId(self):
-        return 'putonghuaListen/'+self.char
+        return 'putonghuaListen/'+self._char
