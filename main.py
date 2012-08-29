@@ -16,52 +16,80 @@
 import time, os
 from random import random, randrange
 from colorPrint import printInCol
+import plot
+from questionDB import QuestionDB
+import readline
 
-####some pedagogistic parameters, these are probably personal
-knowTime=5e4
-
-###const
-correct=1
-wrong=0
-
-####add categories here
+#add categories here
 cats=[]
-import putonghuaListen
+import putonghuaListen, putonghua, year, country
 cats.append(putonghuaListen.PutonghuaListen)
-import putonghua
 cats.append(putonghua.Putonghua)
-import year
 cats.append(year.Year)
-import country
 cats.append(country.Country)
 
-questions=[]
+#Load questions
+questions={}
 for c in cats:
-    questions+=c.getQuestions()
+    for q in c.getQuestions():
+        if q.getId() in questions:
+            raise Exception('Two questions with same id loaded. Id: '+q.getId())
+        questions[q.getId()]=q
+
+def printStats(qdb):
+    print('')
+    printInCol('blue','Total: '+str(len(qdb.tot)))
+    printInCol('green','Known: '+str(len(qdb.known)))
+    printInCol('yellow','Active: '+str(len(qdb.active)))
+    printInCol('red','Never tried: '+str(len(qdb.untried)))
 
 with open(os.path.expanduser('~/.trainerHist'),'a+') as histFile:
-    hist=[l.rstrip('\n').rsplit('\t') for l in histFile]
-    def writeHist(qId,result):
-                ct=time.time()
-                wr=str([wrong,correct][int(result)])
-                histFile.write(qId+'\t'+wr+'\t'+str(ct)+'\n')
-                hist.append([qId,wr,ct])
-
-    lastTime=lambda qId,p:max([float(h[2]) for h in hist if h[:2]==[qId,str(p)]]+[-1])
-    active=lambda qId:lastTime(qId,wrong)!=-1 or lastTime(qId,correct)!=-1
-    probDecay=lambda qId:max(min(0.5*len(chars),knowTime/(lastTime(qId,correct)-lastTime(qId,wrong))),1.0)
-    prob=lambda qId:(2.0*len(chars) if lastTime(qId,correct)<lastTime(qId,wrong) else probDecay(qId)) if active(qId) else 1.0
-    getQ=lambda n=20,r=0,i=0:getQ(n=n-1,r=randrange(len(questions)),i=r if random()<prob(r)/prob(i) else i) if n else i
-    while True:
-        i=getQ()
+    qdb=QuestionDB(questions, histFile)
+    running=True
+    while running:
+        qId=qdb.getQuestion()
         try:
-            writeHist(questions[i].getId(),questions[i]())
+            while True:
+                questions[qId].pose()
+                inp=raw_input()
+                if len(inp)>0 and inp[0]==':':
+                    command=inp[1:]
+                    if command=='again':
+                        continue
+                    elif command=='exit':
+                        running=False
+                        break
+                    elif command=='stat':
+                        printStats(qdb)
+                    elif command=='undo':
+                        if len(qdb.hist)==0:
+                            printInCol('red','No answers to undo...')
+                        else:
+                            printInCol('blue','Undid question: '+qdb.undo())
+                    elif command=='plot':
+                        plot.learningCurve(qdb)
+                    else:
+                        printInCol('red','Unknown command: '+command)
+                else:
+                    if inp=='.':
+                        qdb.writeHist(qId, True)
+                    else:
+                        if questions[qId].verify(inp):
+                            printInCol('green','Correct!')
+                            qdb.writeHist(qId, True)
+                        else:
+                            #It is the questions responsibility to tell the user shle was wrong
+                            #and inform on whats correct in q.printMessage()
+                            qdb.writeHist(qId, False)
+                        questions[qId].printMessage()
+                    break
+        except (KeyboardInterrupt, EOFError):
+            running=False
+        finally:
             print('')
-        except KeyboardInterrupt:
-            countType=lambda t:sum(1 for i in range(len(questions)) if t(questions[i].getId()))
-            printInCol('blue','\nTotal: '+str(countType(lambda i:correct)))
-            printInCol('green','Known: '+str(countType(lambda i:lastTime(i,correct)-lastTime(i,wrong)>knowTime)))
-            printInCol('yellow','Used: '+str(countType(active)))
-            printInCol('red','Never correct: '+str(countType(lambda i:lastTime(i,correct)==-1)))
-            printInCol('turquoise','Goodbye!')
-            break
+    try:
+        printStats(qdb)
+    except (KeyboardInterrupt, EOFError):
+        printInCol('green','Ok, got it!! You want to leave NOW.')
+    finally:
+        printInCol('turquoise','Goodbye!')
