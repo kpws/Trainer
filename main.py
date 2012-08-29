@@ -54,7 +54,7 @@ with open(os.path.expanduser('~/.trainerHist'),'a+') as histFile:
                 inp=raw_input()
                 if len(inp)>0 and inp[0]==':':
                     command=inp[1:]
-                    if command=='again':
+                    if command in ['again', 'a']:
                         continue
                     elif command=='exit':
                         running=False
