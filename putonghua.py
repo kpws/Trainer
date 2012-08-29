@@ -16,7 +16,7 @@ class Putonghua(question.Question):
 
     def printMessage(self):
         if not self._wasCorrect:
-            printInCol('blue','This character is in English: '+self._answer+'.')
+            printInCol('red','Wrong, this character is in English: '+self._answer+'.')
         printInCol('blue','Pinyin: '+self._pinyin)
 
     def getId(self):

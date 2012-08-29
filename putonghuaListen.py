@@ -7,8 +7,12 @@ class PutonghuaListen(question.Question):
     def __init__(self, char, pinyin, english):
         self._char=char
         self._answer=english
-        self._message='Character: '+char+'\nPinyin: '+pinyin
         self._pinyin=pinyin
+
+    def printMessage(self):
+        if not self._wasCorrect:
+            printInCol('red','Wrong, the correct answer is: '+self._answer+'.')
+        printInCol('blue','Character: '+self._char+'\nPinyin: '+self._pinyin)
 
     @staticmethod
     def getQuestions():
