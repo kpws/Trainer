@@ -38,6 +38,8 @@ for c in cats:
 
 def printStats(qdb):
     print('')
+    printInCol('green','Learnt this session: '+str(learnt))
+    printInCol('red','Forgotten this session: '+str(forgotten)+'\n')
     printInCol('blue','Total: '+str(len(qdb.tot)))
     printInCol('green','Known: '+str(len(qdb.known)))
     printInCol('yellow','Active: '+str(len(qdb.active)))
@@ -45,47 +47,68 @@ def printStats(qdb):
 
 with open(os.path.expanduser('~/.trainerHist'),'a+') as histFile:
     qdb=QuestionDB(questions, histFile)
+    learnt=0
+    forgotten=0
     running=True
     while running:
         qId=qdb.getQuestion()
-        try:
-            while True:
-                questions[qId].pose()
+        while True:
+            questions[qId].pose()
+            try:
                 inp=raw_input()
-                if len(inp)>0 and inp[0]==':':
-                    command=inp[1:]
-                    if command=='again':
-                        continue
-                    elif command=='exit':
-                        running=False
-                        break
-                    elif command=='stat':
-                        printStats(qdb)
-                    elif command=='undo':
-                        if len(qdb.hist)==0:
-                            printInCol('red','No answers to undo...')
-                        else:
-                            printInCol('blue','Undid question: '+qdb.undo())
-                    elif command=='plot':
-                        plot.learningCurve(qdb)
-                    else:
-                        printInCol('red','Unknown command: '+command)
-                else:
-                    if inp=='.':
-                        qdb.writeHist(qId, True)
-                    else:
-                        if questions[qId].verify(inp):
-                            printInCol('green','Correct!')
-                            qdb.writeHist(qId, True)
-                        else:
-                            #It is the questions responsibility to tell the user shle was wrong
-                            #and inform on whats correct in q.printMessage()
-                            qdb.writeHist(qId, False)
-                        questions[qId].printMessage()
+            except (KeyboardInterrupt, EOFError):
+                running=False
+                break
+            if len(inp)>0 and inp[0]==':':
+                command=inp[1:]
+                if command=='again':
+                    continue
+                elif command=='exit':
+                    running=False
                     break
-        except (KeyboardInterrupt, EOFError):
-            running=False
-        finally:
+                elif command=='stat':
+                    printStats(qdb)
+                elif command=='undo':
+                    if len(qdb.hist)==0:
+                        printInCol('red','No answers to undo...')
+                    else:
+                        undoId, dActive, dKnown=qdb.undo()
+                        if dKnown==-1:
+                            learnt=max(0,learnt-1)
+                        elif dKnown==1:
+                            forgotten=max(0,forgotten-1)
+                        else:
+                            assert(dKnown==0)
+                        printInCol('blue','Undid question: '+undoId)
+                elif command=='plot':
+                    plot.learningCurve(qdb)
+                else:
+                    printInCol('red','Unknown command: '+command)
+            else:
+                if inp=='.':
+                    dActive,dKnown=qdb.writeHist(qId, True)
+                    if dKnown==1:
+                        learnt+=1
+                    else:
+                        assert(dKnown==0)
+                else:
+                    if questions[qId].verify(inp):
+                        printInCol('green','Correct!')
+                        dActive,dKnown=qdb.writeHist(qId, True)
+                        if dKnown==1:
+                            learnt+=1
+                        else:
+                            assert(dKnown==0)
+                    else:
+                        #It is the questions responsibility to tell the user shle was wrong
+                        #and inform on whats correct in q.printMessage()
+                         dActive,dKnown=qdb.writeHist(qId, False)
+                         if dKnown==-1:
+                             forgotten+=1
+                         else:
+                             assert(dKnown==0)
+                    questions[qId].printMessage()
+                break
             print('')
     try:
         printStats(qdb)

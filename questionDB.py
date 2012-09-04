@@ -2,13 +2,13 @@ from time import time
 import random
 
 askAgainCorrect = 1*60*60
-askAgainWrong = 5*60
+askAgainWrong = 4*60
 knowTime = 3*24*60*60
 actuallyKnownRatio=0.95
 measurePrec=0.05
 maxNewPerSession=10
 
-qMode = {0:'untried', 1:'active', 1:'known'}
+qMode = {0:'untried', 1:'active', 2:'known'}
 fileWords = {'0':False, '1':True}
 toFileWords = dict([(fileWords[k], k) for k in fileWords])
 
@@ -59,10 +59,17 @@ class QuestionDB():
     def writeHist(self, qId, result):
         ct=time()
         self.histFile.write(qId+'\t'+toFileWords[result]+'\t'+str(ct)+'\n')
-        self.hist.append([qId,result,ct])
+        self.hist.append((qId,result,ct))
         self.tot[qId].add(result, ct)
         self.updateSets(qId)
         self.stats.append((ct, len(self.active), len(self.known)))
+        if len(self.stats)>=2:
+            oldActive=self.stats[-2][1]
+            oldKnown=self.stats[-2][2]
+        else:
+            oldActive=0
+            oldKnown=0
+        return (self.stats[-1][1]-oldActive, self.stats[-1][2]-oldKnown)
 
     def undo(self):
         self.histFile.seek(-2,2)
@@ -71,9 +78,15 @@ class QuestionDB():
         self.histFile.truncate()
         ret=self.hist.pop(-1)[0]
         self.tot[ret].hist.pop(-1)
+        if len(self.stats)>=2:
+            dActive=self.stats[-2][1]-self.stats[-1][1]
+            dKnown=self.stats[-2][2]-self.stats[-1][2]
+        else:
+            dActive=-self.stats[-1][1]
+            dKnown=-self.stats[-1][2]
         self.updateSets(ret)
         self.stats.pop()
-        return ret
+        return (ret, dActive, dKnown)
 
     def makeSets(self, questions):
         self.tot=dict([(q, QuestionHist()) for q in questions])
