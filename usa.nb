@@ -1,0 +1,329 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     15599,        320]
+NotebookOptionsPosition[     15099,        298]
+NotebookOutlinePosition[     15435,        313]
+CellTagsIndexPosition[     15392,        310]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"withSpaces", "[", "s_", "]"}], ":=", 
+  RowBox[{"StringJoin", "[", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Join", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"Characters", "[", "s", "]"}], "[", 
+        RowBox[{"[", "1", "]"}], "]"}], "}"}], ",", 
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{"UpperCaseQ", "[", 
+           RowBox[{
+            RowBox[{"Characters", "[", "s", "]"}], "[", 
+            RowBox[{"[", "i", "]"}], "]"}], "]"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"\"\< \>\"", ",", 
+            RowBox[{
+             RowBox[{"Characters", "[", "s", "]"}], "[", 
+             RowBox[{"[", "i", "]"}], "]"}]}], "}"}], ",", 
+          RowBox[{
+           RowBox[{"Characters", "[", "s", "]"}], "[", 
+           RowBox[{"[", "i", "]"}], "]"}]}], "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"i", ",", "2", ",", 
+          RowBox[{"Length", "[", 
+           RowBox[{"Characters", "[", "s", "]"}], "]"}]}], "}"}]}], "]"}]}], 
+     "]"}], "]"}], "]"}]}]], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"CountryData", "[", 
+  RowBox[{"\"\<USA\>\"", ",", "\"\<Regions\>\""}], "]"}]], "Input",
+ CellChangeTimes->{{3.557862789496963*^9, 3.557862869227495*^9}, {
+  3.557863202986966*^9, 3.5578632062539454`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"Alabama\"\>", ",", "\<\"Alaska\"\>", ",", "\<\"Arizona\"\>", 
+   ",", "\<\"Arkansas\"\>", ",", "\<\"California\"\>", 
+   ",", "\<\"Colorado\"\>", ",", "\<\"Connecticut\"\>", 
+   ",", "\<\"Delaware\"\>", ",", "\<\"DistrictOfColumbia\"\>", 
+   ",", "\<\"Florida\"\>", ",", "\<\"Georgia\"\>", ",", "\<\"Hawaii\"\>", 
+   ",", "\<\"Idaho\"\>", ",", "\<\"Illinois\"\>", ",", "\<\"Indiana\"\>", 
+   ",", "\<\"Iowa\"\>", ",", "\<\"Kansas\"\>", ",", "\<\"Kentucky\"\>", 
+   ",", "\<\"Louisiana\"\>", ",", "\<\"Maine\"\>", ",", "\<\"Maryland\"\>", 
+   ",", "\<\"Massachusetts\"\>", ",", "\<\"Michigan\"\>", 
+   ",", "\<\"Minnesota\"\>", ",", "\<\"Mississippi\"\>", 
+   ",", "\<\"Missouri\"\>", ",", "\<\"Montana\"\>", ",", "\<\"Nebraska\"\>", 
+   ",", "\<\"Nevada\"\>", ",", "\<\"NewHampshire\"\>", 
+   ",", "\<\"NewJersey\"\>", ",", "\<\"NewMexico\"\>", ",", "\<\"NewYork\"\>",
+    ",", "\<\"NorthCarolina\"\>", ",", "\<\"NorthDakota\"\>", 
+   ",", "\<\"Ohio\"\>", ",", "\<\"Oklahoma\"\>", ",", "\<\"Oregon\"\>", 
+   ",", "\<\"Pennsylvania\"\>", ",", "\<\"RhodeIsland\"\>", 
+   ",", "\<\"SouthCarolina\"\>", ",", "\<\"SouthDakota\"\>", 
+   ",", "\<\"Tennessee\"\>", ",", "\<\"Texas\"\>", ",", "\<\"Utah\"\>", 
+   ",", "\<\"Vermont\"\>", ",", "\<\"Virginia\"\>", ",", "\<\"Washington\"\>",
+    ",", "\<\"WestVirginia\"\>", ",", "\<\"Wisconsin\"\>", 
+   ",", "\<\"Wyoming\"\>"}], "}"}]], "Output",
+ CellChangeTimes->{{3.557862794000276*^9, 3.5578628699042387`*^9}, 
+   3.557863206844149*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"Table", "[", 
+  RowBox[{
+   RowBox[{"Export", "[", 
+    RowBox[{
+     RowBox[{"\"\</home/petter/projects/Trainer/data/usa/\>\"", "<>", 
+      RowBox[{"withSpaces", "[", "i", "]"}], "<>", "\"\<.png\>\""}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Graphics", "[", 
+      RowBox[{
+       RowBox[{"Join", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{"{", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"EdgeForm", "[", "Black", "]"}], ",", 
+             RowBox[{"Catch", "[", 
+              RowBox[{"If", "[", 
+               RowBox[{
+                RowBox[{"#", "\[Equal]", "i"}], ",", 
+                RowBox[{"RGBColor", "[", 
+                 RowBox[{"0.1", ",", "0.8", ",", "0.1"}], "]"}], ",", 
+                RowBox[{"RGBColor", "[", 
+                 RowBox[{"0.3", ",", "0.3", ",", "0.3"}], "]"}]}], "]"}], 
+              "]"}], ",", 
+             RowBox[{"CountryData", "[", 
+              RowBox[{"#", ",", "\"\<Polygon\>\""}], "]"}]}], 
+            "\[IndentingNewLine]", "\[IndentingNewLine]", 
+            "\[IndentingNewLine]", "}"}], "&"}], "/@", 
+          RowBox[{"CountryData", "[", 
+           RowBox[{"\"\<USA\>\"", ",", "\"\<Regions\>\""}], "]"}]}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"CountryData", "[", 
+             RowBox[{"i", ",", "\"\<Area\>\""}], "]"}], "<", "1500"}], ",", 
+           "\[IndentingNewLine]", 
+           RowBox[{"{", 
+            RowBox[{"Inset", "[", 
+             RowBox[{
+              RowBox[{"Graphics", "[", 
+               RowBox[{"{", 
+                RowBox[{"Green", ",", 
+                 RowBox[{"Thickness", "[", "0.01", "]"}], ",", 
+                 RowBox[{"Line", "[", 
+                  RowBox[{"{", 
+                   RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"-", "1"}], ",", "0"}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"1", ",", "0"}], "}"}]}], "}"}], "]"}], ",", 
+                 RowBox[{"Line", "[", 
+                  RowBox[{"{", 
+                   RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", 
+                    RowBox[{"-", "1"}]}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", "1"}], "}"}]}], "}"}], "]"}]}], "}"}], 
+               "]"}], ",", 
+              RowBox[{"Reverse", "[", 
+               RowBox[{"CountryData", "[", 
+                RowBox[{"i", ",", "\"\<CenterCoordinates\>\""}], "]"}], 
+               "]"}]}], "]"}], "}"}], ",", "\[IndentingNewLine]", 
+           RowBox[{"{", "}"}]}], "]"}]}], "\[IndentingNewLine]", 
+        "\[IndentingNewLine]", "]"}], ",", 
+       RowBox[{"ImageSize", "\[Rule]", "2000"}]}], "]"}]}], "]"}], 
+   "\[IndentingNewLine]", ",", 
+   RowBox[{"{", 
+    RowBox[{"i", ",", 
+     RowBox[{"CountryData", "[", 
+      RowBox[{"\"\<USA\>\"", ",", "\"\<Regions\>\""}], "]"}]}], "}"}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.553774050602192*^9, 3.553774058374564*^9}, {
+   3.553774130849827*^9, 3.553774144419339*^9}, {3.553774186641814*^9, 
+   3.553774214478158*^9}, {3.553774463739027*^9, 3.553774497174621*^9}, {
+   3.553774604435761*^9, 3.5537746368222933`*^9}, {3.5537746715675097`*^9, 
+   3.553774672236891*^9}, {3.553774705408208*^9, 3.5537747244587593`*^9}, {
+   3.553774915045578*^9, 3.553774916697115*^9}, 3.5537750716332693`*^9, {
+   3.553775134470632*^9, 3.5537752066294413`*^9}, {3.553775263531084*^9, 
+   3.553775297037161*^9}, {3.553775328531744*^9, 3.553775383735086*^9}, {
+   3.553775439932371*^9, 3.5537754958072968`*^9}, {3.55377553220228*^9, 
+   3.5537756387399282`*^9}, {3.5537758096167307`*^9, 3.553775831394328*^9}, 
+   3.5537759906538773`*^9, {3.553776024219939*^9, 3.5537760288941317`*^9}, {
+   3.5537762550646353`*^9, 3.553776309467113*^9}, {3.5537766215123863`*^9, 
+   3.5537766995118732`*^9}, 3.553777173940914*^9, {3.5578626854934196`*^9, 
+   3.55786271694517*^9}, {3.557863228996331*^9, 3.557863278038118*^9}, {
+   3.5578633324783983`*^9, 3.557863351260154*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"CountryData", "[", "]"}]], "Input",
+ CellChangeTimes->{{3.557863362633184*^9, 3.557863377487953*^9}, {
+  3.5578635878813877`*^9, 3.557863635218885*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"Afghanistan\"\>", ",", "\<\"Albania\"\>", 
+   ",", "\<\"Algeria\"\>", ",", "\<\"AmericanSamoa\"\>", 
+   ",", "\<\"Andorra\"\>", ",", "\<\"Angola\"\>", ",", "\<\"Anguilla\"\>", 
+   ",", "\<\"AntiguaBarbuda\"\>", ",", "\<\"Argentina\"\>", 
+   ",", "\<\"Armenia\"\>", ",", "\<\"Aruba\"\>", ",", "\<\"Australia\"\>", 
+   ",", "\<\"Austria\"\>", ",", "\<\"Azerbaijan\"\>", ",", "\<\"Bahamas\"\>", 
+   ",", "\<\"Bahrain\"\>", ",", "\<\"Bangladesh\"\>", ",", "\<\"Barbados\"\>",
+    ",", "\<\"Belarus\"\>", ",", "\<\"Belgium\"\>", ",", "\<\"Belize\"\>", 
+   ",", "\<\"Benin\"\>", ",", "\<\"Bermuda\"\>", ",", "\<\"Bhutan\"\>", 
+   ",", "\<\"Bolivia\"\>", ",", "\<\"BosniaHerzegovina\"\>", 
+   ",", "\<\"Botswana\"\>", ",", "\<\"Brazil\"\>", 
+   ",", "\<\"BritishVirginIslands\"\>", ",", "\<\"Brunei\"\>", 
+   ",", "\<\"Bulgaria\"\>", ",", "\<\"BurkinaFaso\"\>", 
+   ",", "\<\"Burundi\"\>", ",", "\<\"Cambodia\"\>", ",", "\<\"Cameroon\"\>", 
+   ",", "\<\"Canada\"\>", ",", "\<\"CapeVerde\"\>", 
+   ",", "\<\"CaymanIslands\"\>", ",", "\<\"CentralAfricanRepublic\"\>", 
+   ",", "\<\"Chad\"\>", ",", "\<\"Chile\"\>", ",", "\<\"China\"\>", 
+   ",", "\<\"ChristmasIsland\"\>", ",", "\<\"CocosKeelingIslands\"\>", 
+   ",", "\<\"Colombia\"\>", ",", "\<\"Comoros\"\>", 
+   ",", "\<\"CookIslands\"\>", ",", "\<\"CostaRica\"\>", 
+   ",", "\<\"Croatia\"\>", ",", "\<\"Cuba\"\>", ",", "\<\"Curacao\"\>", 
+   ",", "\<\"Cyprus\"\>", ",", "\<\"CzechRepublic\"\>", 
+   ",", "\<\"DemocraticRepublicCongo\"\>", ",", "\<\"Denmark\"\>", 
+   ",", "\<\"Djibouti\"\>", ",", "\<\"Dominica\"\>", 
+   ",", "\<\"DominicanRepublic\"\>", ",", "\<\"EastTimor\"\>", 
+   ",", "\<\"Ecuador\"\>", ",", "\<\"Egypt\"\>", ",", "\<\"ElSalvador\"\>", 
+   ",", "\<\"EquatorialGuinea\"\>", ",", "\<\"Eritrea\"\>", 
+   ",", "\<\"Estonia\"\>", ",", "\<\"Ethiopia\"\>", 
+   ",", "\<\"FalklandIslands\"\>", ",", "\<\"FaroeIslands\"\>", 
+   ",", "\<\"Fiji\"\>", ",", "\<\"Finland\"\>", ",", "\<\"France\"\>", 
+   ",", "\<\"FrenchGuiana\"\>", ",", "\<\"FrenchPolynesia\"\>", 
+   ",", "\<\"Gabon\"\>", ",", "\<\"Gambia\"\>", ",", "\<\"GazaStrip\"\>", 
+   ",", "\<\"Georgia\"\>", ",", "\<\"Germany\"\>", ",", "\<\"Ghana\"\>", 
+   ",", "\<\"Gibraltar\"\>", ",", "\<\"Greece\"\>", ",", "\<\"Greenland\"\>", 
+   ",", "\<\"Grenada\"\>", ",", "\<\"Guadeloupe\"\>", ",", "\<\"Guam\"\>", 
+   ",", "\<\"Guatemala\"\>", ",", "\<\"Guernsey\"\>", ",", "\<\"Guinea\"\>", 
+   ",", "\<\"GuineaBissau\"\>", ",", "\<\"Guyana\"\>", ",", "\<\"Haiti\"\>", 
+   ",", "\<\"Honduras\"\>", ",", "\<\"HongKong\"\>", ",", "\<\"Hungary\"\>", 
+   ",", "\<\"Iceland\"\>", ",", "\<\"India\"\>", ",", "\<\"Indonesia\"\>", 
+   ",", "\<\"Iran\"\>", ",", "\<\"Iraq\"\>", ",", "\<\"Ireland\"\>", 
+   ",", "\<\"IsleOfMan\"\>", ",", "\<\"Israel\"\>", ",", "\<\"Italy\"\>", 
+   ",", "\<\"IvoryCoast\"\>", ",", "\<\"Jamaica\"\>", ",", "\<\"Japan\"\>", 
+   ",", "\<\"Jersey\"\>", ",", "\<\"Jordan\"\>", ",", "\<\"Kazakhstan\"\>", 
+   ",", "\<\"Kenya\"\>", ",", "\<\"Kiribati\"\>", ",", "\<\"Kosovo\"\>", 
+   ",", "\<\"Kuwait\"\>", ",", "\<\"Kyrgyzstan\"\>", ",", "\<\"Laos\"\>", 
+   ",", "\<\"Latvia\"\>", ",", "\<\"Lebanon\"\>", ",", "\<\"Lesotho\"\>", 
+   ",", "\<\"Liberia\"\>", ",", "\<\"Libya\"\>", ",", "\<\"Liechtenstein\"\>",
+    ",", "\<\"Lithuania\"\>", ",", "\<\"Luxembourg\"\>", ",", "\<\"Macau\"\>",
+    ",", "\<\"Macedonia\"\>", ",", "\<\"Madagascar\"\>", 
+   ",", "\<\"Malawi\"\>", ",", "\<\"Malaysia\"\>", ",", "\<\"Maldives\"\>", 
+   ",", "\<\"Mali\"\>", ",", "\<\"Malta\"\>", ",", "\<\"MarshallIslands\"\>", 
+   ",", "\<\"Martinique\"\>", ",", "\<\"Mauritania\"\>", 
+   ",", "\<\"Mauritius\"\>", ",", "\<\"Mayotte\"\>", ",", "\<\"Mexico\"\>", 
+   ",", "\<\"Micronesia\"\>", ",", "\<\"Moldova\"\>", ",", "\<\"Monaco\"\>", 
+   ",", "\<\"Mongolia\"\>", ",", "\<\"Montenegro\"\>", 
+   ",", "\<\"Montserrat\"\>", ",", "\<\"Morocco\"\>", 
+   ",", "\<\"Mozambique\"\>", ",", "\<\"Myanmar\"\>", ",", "\<\"Namibia\"\>", 
+   ",", "\<\"Nauru\"\>", ",", "\<\"Nepal\"\>", ",", "\<\"Netherlands\"\>", 
+   ",", "\<\"NewCaledonia\"\>", ",", "\<\"NewZealand\"\>", 
+   ",", "\<\"Nicaragua\"\>", ",", "\<\"Niger\"\>", ",", "\<\"Nigeria\"\>", 
+   ",", "\<\"Niue\"\>", ",", "\<\"NorfolkIsland\"\>", 
+   ",", "\<\"NorthernMarianaIslands\"\>", ",", "\<\"NorthKorea\"\>", 
+   ",", "\<\"Norway\"\>", ",", "\<\"Oman\"\>", ",", "\<\"Pakistan\"\>", 
+   ",", "\<\"Palau\"\>", ",", "\<\"Panama\"\>", ",", "\<\"PapuaNewGuinea\"\>",
+    ",", "\<\"Paraguay\"\>", ",", "\<\"Peru\"\>", ",", "\<\"Philippines\"\>", 
+   ",", "\<\"PitcairnIslands\"\>", ",", "\<\"Poland\"\>", 
+   ",", "\<\"Portugal\"\>", ",", "\<\"PuertoRico\"\>", ",", "\<\"Qatar\"\>", 
+   ",", "\<\"RepublicCongo\"\>", ",", "\<\"Reunion\"\>", 
+   ",", "\<\"Romania\"\>", ",", "\<\"Russia\"\>", ",", "\<\"Rwanda\"\>", 
+   ",", "\<\"SaintHelena\"\>", ",", "\<\"SaintKittsNevis\"\>", 
+   ",", "\<\"SaintLucia\"\>", ",", "\<\"SaintPierreMiquelon\"\>", 
+   ",", "\<\"SaintVincentGrenadines\"\>", ",", "\<\"Samoa\"\>", 
+   ",", "\<\"SanMarino\"\>", ",", "\<\"SaoTomePrincipe\"\>", 
+   ",", "\<\"SaudiArabia\"\>", ",", "\<\"Senegal\"\>", ",", "\<\"Serbia\"\>", 
+   ",", "\<\"Seychelles\"\>", ",", "\<\"SierraLeone\"\>", 
+   ",", "\<\"Singapore\"\>", ",", "\<\"SintMaarten\"\>", 
+   ",", "\<\"Slovakia\"\>", ",", "\<\"Slovenia\"\>", 
+   ",", "\<\"SolomonIslands\"\>", ",", "\<\"Somalia\"\>", 
+   ",", "\<\"SouthAfrica\"\>", ",", "\<\"SouthKorea\"\>", 
+   ",", "\<\"SouthSudan\"\>", ",", "\<\"Spain\"\>", ",", "\<\"SriLanka\"\>", 
+   ",", "\<\"Sudan\"\>", ",", "\<\"Suriname\"\>", ",", "\<\"Svalbard\"\>", 
+   ",", "\<\"Swaziland\"\>", ",", "\<\"Sweden\"\>", 
+   ",", "\<\"Switzerland\"\>", ",", "\<\"Syria\"\>", ",", "\<\"Taiwan\"\>", 
+   ",", "\<\"Tajikistan\"\>", ",", "\<\"Tanzania\"\>", 
+   ",", "\<\"Thailand\"\>", ",", "\<\"Togo\"\>", ",", "\<\"Tokelau\"\>", 
+   ",", "\<\"Tonga\"\>", ",", "\<\"TrinidadTobago\"\>", 
+   ",", "\<\"Tunisia\"\>", ",", "\<\"Turkey\"\>", ",", "\<\"Turkmenistan\"\>",
+    ",", "\<\"TurksCaicosIslands\"\>", ",", "\<\"Tuvalu\"\>", 
+   ",", "\<\"Uganda\"\>", ",", "\<\"Ukraine\"\>", 
+   ",", "\<\"UnitedArabEmirates\"\>", ",", "\<\"UnitedKingdom\"\>", 
+   ",", "\<\"UnitedStates\"\>", ",", "\<\"UnitedStatesVirginIslands\"\>", 
+   ",", "\<\"Uruguay\"\>", ",", "\<\"Uzbekistan\"\>", ",", "\<\"Vanuatu\"\>", 
+   ",", "\<\"VaticanCity\"\>", ",", "\<\"Venezuela\"\>", 
+   ",", "\<\"Vietnam\"\>", ",", "\<\"WallisFutuna\"\>", 
+   ",", "\<\"WestBank\"\>", ",", "\<\"WesternSahara\"\>", 
+   ",", "\<\"Yemen\"\>", ",", "\<\"Zambia\"\>", ",", "\<\"Zimbabwe\"\>"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{
+  3.5537740704482937`*^9, {3.553774141209032*^9, 3.553774159066168*^9}, 
+   3.553774192850594*^9, 3.5537742237512207`*^9, 3.553774638031063*^9, 
+   3.553774725693087*^9, {3.553775157932365*^9, 3.5537751737673197`*^9}, 
+   3.553775299899791*^9, 3.553775385345612*^9, 3.55377544405306*^9, 
+   3.5537754970292788`*^9, 3.553775554616159*^9, 3.5537756399616013`*^9, 
+   3.5537759662446737`*^9, 3.553776229368765*^9, 3.5537764964181004`*^9, 
+   3.5537768907200336`*^9, 3.553777368335146*^9, 3.5578632529767637`*^9, {
+   3.55786335277433*^9, 3.557863378333145*^9}, {3.557863592560974*^9, 
+   3.557863635932392*^9}}]
+}, Open  ]]
+},
+WindowSize->{1366, 751},
+WindowMargins->{{0, Automatic}, {0, Automatic}},
+FrontEndVersion->"8.0 for Linux x86 (64-bit) (February 23, 2011)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 1119, 31, 129, "Input"],
+Cell[CellGroupData[{
+Cell[1701, 55, 228, 4, 36, "Input"],
+Cell[1932, 61, 1524, 24, 129, "Output"]
+}, Open  ]],
+Cell[3471, 88, 4183, 90, 336, "Input"],
+Cell[CellGroupData[{
+Cell[7679, 182, 176, 3, 36, "Input"],
+Cell[7858, 187, 7225, 108, 543, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

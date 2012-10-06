@@ -41,7 +41,8 @@ def printStats(qdb):
     printInCol('green','Learnt this session: '+str(learnt))
     printInCol('red','Forgotten this session: '+str(forgotten)+'\n')
     printInCol('blue','Total: '+str(len(qdb.tot)))
-    printInCol('green','Known: '+str(len(qdb.known)))
+    r,low,up=qdb.getActuallyKnownRatio()
+    printInCol('green','Known, [%.0f%%'%(low*100)+', %.0f%%] 95%% c.i.: '%(up*100)+str(len(qdb.known)))
     printInCol('yellow','Active: '+str(len(qdb.active)))
     printInCol('red','Never tried: '+str(len(qdb.untried)))
 
@@ -71,6 +72,22 @@ with open(os.path.expanduser('~/.trainerHist'),'a+') as histFile:
                 elif command=='undo':
                     if len(qdb.hist)==0:
                         printInCol('red','No answers to undo...')
+                if len(inp)>0 and inp[0]==':':
+                    command=inp[1:]
+                    if command in ['again', 'a']:
+                        continue
+                    elif command=='exit':
+                        running=False
+                        break
+                    elif command=='stat':
+                        printStats(qdb)
+                    elif command=='undo':
+                        if len(qdb.hist)==0:
+                            printInCol('red','No answers to undo...')
+                        else:
+                            printInCol('blue','Undid question: '+qdb.undo())
+                    elif command=='plot':
+                        plot.learningCurve(qdb)
                     else:
                         undoId, dActive, dKnown=qdb.undo()
                         if dKnown==-1:
