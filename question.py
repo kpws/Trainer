@@ -1,4 +1,3 @@
-import trainer
 from colorPrint import printInCol
 
 class Question():

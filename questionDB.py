@@ -81,7 +81,6 @@ class QuestionDB():
         self.updateSets(qId)
         self.stats.append((ct, len(self.active), len(self.known)))
         if outputDiff:
-            print self.stats
             if len(self.stats)>=2:
                 oldActive=self.stats[-2][1]
                 oldKnown=self.stats[-2][2]
@@ -145,7 +144,6 @@ class QuestionDB():
     def getActuallyKnownRatio(self, ct=None):
         if ct==None:
             ct=time()
-        print self.actuallyKnownHist
         tot=sum(1 for v,t in self.actuallyKnownHist if t>ct-actuallyKnownTime)
         actuallyKnown=sum(1 for v,t in self.actuallyKnownHist if t>ct-actuallyKnownTime and v)
         if tot==0:
@@ -153,12 +151,11 @@ class QuestionDB():
         else:
             r=float(actuallyKnown)/tot
             alpha=1-conf
-            print alpha,actuallyKnown,tot
-            return r,btdtri(actuallyKnown,tot-actuallyKnown+1,alpha/2),btdtri(actuallyKnown+1,tot-actuallyKnown,1-alpha/2)
+            return (r,0. if actuallyKnown==0 else btdtri(actuallyKnown,tot-actuallyKnown+1,alpha/2),
+                    1. if actuallyKnown==tot else btdtri(actuallyKnown+1,tot-actuallyKnown,1-alpha/2))
 
     def getNonActive(self):
         a,b,c=self.getActuallyKnownRatio()
-        print b
         if b<actuallyKnownRatio or len(self.untried)==0:
             ratio=float('inf')
             ct=time()
