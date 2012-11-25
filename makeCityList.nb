@@ -1,0 +1,250 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      8540,        241]
+NotebookOptionsPosition[      7864,        213]
+NotebookOutlinePosition[      8200,        228]
+CellTagsIndexPosition[      8157,        225]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"bigCities", "=", 
+   RowBox[{"Select", "[", 
+    RowBox[{
+     RowBox[{"CityData", "[", "]"}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"CityData", "[", 
+        RowBox[{"#", ",", "\"\<Population\>\""}], "]"}], ">", 
+       RowBox[{"1.2", "*", 
+        RowBox[{"10", "^", "6"}]}]}], "&"}]}], "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.5611127873733063`*^9, 3.561112815349697*^9}, 
+   3.561112912635333*^9, 3.561113290379201*^9, {3.561114830181086*^9, 
+   3.561114832134158*^9}, {3.5611148807983847`*^9, 3.561114881946426*^9}, {
+   3.561134994529483*^9, 3.561135004558313*^9}, {3.561135046721773*^9, 
+   3.561135047057019*^9}, {3.561139650021779*^9, 3.561139651994563*^9}, {
+   3.5611398379191504`*^9, 3.561139838105639*^9}, {3.561139987429247*^9, 
+   3.561139999618898*^9}, {3.561201844390862*^9, 3.5612018744569483`*^9}, {
+   3.561201954700334*^9, 3.5612019992163277`*^9}, {3.561214367718961*^9, 
+   3.561214384596233*^9}}],
+
+Cell[BoxData["$Aborted"], "Output",
+ CellChangeTimes->{3.561214389039345*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"bigCities", ";"}]], "Input",
+ CellChangeTimes->{{3.561201780742914*^9, 3.561201782035461*^9}, 
+   3.561213271741625*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Export", "[", 
+   RowBox[{"\"\<projects/Trainer/bigCities.csv\>\"", ",", 
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{"CityData", "[", 
+       RowBox[{"c", ",", "\"\<Name\>\""}], "]"}], ",", "bigCities"}], "]"}]}],
+    "]"}], ";"}]], "Input",
+ CellChangeTimes->{{3.561135011075964*^9, 3.561135034775202*^9}, {
+  3.5611350663511333`*^9, 3.561135111189886*^9}, {3.561202255880353*^9, 
+  3.561202272377631*^9}, {3.5612143596222153`*^9, 3.5612143709212418`*^9}}],
+
+Cell[BoxData["\<\"projects/Trainer/bigCities.csv\"\>"], "Output",
+ CellChangeTimes->{{3.5611351053307*^9, 3.561135112238701*^9}, 
+   3.561139675666153*^9, 3.561139726415682*^9, {3.5611399156207743`*^9, 
+   3.561139950531122*^9}, {3.5612022588301153`*^9, 3.561202269615902*^9}}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"cityHits", "=", 
+   RowBox[{"Import", "[", "\"\<projects/Trainer/cityHits\>\"", "]"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.561213277938499*^9, 3.5612132966549597`*^9}, {
+  3.5612133801164494`*^9, 3.5612133962521353`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"hits", "[", "city_", "]"}], ":=", 
+  RowBox[{"If", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Position", "[", 
+      RowBox[{
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"i", "[", 
+          RowBox[{"[", "1", "]"}], "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", "cityHits"}], "}"}]}], "]"}], ",", 
+       RowBox[{"CityData", "[", 
+        RowBox[{"city", ",", "\"\<Name\>\""}], "]"}]}], "]"}], "\[Equal]", 
+     RowBox[{"{", "}"}]}], ",", "0", ",", 
+    RowBox[{
+     RowBox[{"cityHits", "[", 
+      RowBox[{"[", "  ", 
+       RowBox[{
+        RowBox[{"Position", "[", 
+         RowBox[{
+          RowBox[{"Table", "[", 
+           RowBox[{
+            RowBox[{"i", "[", 
+             RowBox[{"[", "1", "]"}], "]"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"i", ",", "cityHits"}], "}"}]}], "]"}], ",", 
+          RowBox[{"CityData", "[", 
+           RowBox[{"city", ",", "\"\<Name\>\""}], "]"}]}], "]"}], "[", 
+        RowBox[{"[", 
+         RowBox[{"1", ",", "1"}], "]"}], "]"}], "  ", "]"}], "]"}], "[", 
+     RowBox[{"[", "2", "]"}], "]"}]}], "  ", "]"}]}]], "Input",
+ CellChangeTimes->{{3.561213360287136*^9, 3.5612134233675747`*^9}, {
+  3.561213491628924*^9, 3.561213560871325*^9}, {3.561213605225082*^9, 
+  3.5612136347906313`*^9}, {3.561213706645043*^9, 3.561213712532785*^9}, {
+  3.561213795740555*^9, 3.561213798010298*^9}, {3.561213828618627*^9, 
+  3.561213834444343*^9}, {3.5612140080381203`*^9, 3.5612140203848343`*^9}, {
+  3.561214159675318*^9, 3.561214209555772*^9}, {3.561214239684992*^9, 
+  3.561214309177074*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"hits", "[", "\"\<Beirut\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.561214212812262*^9, 3.561214218396819*^9}, {
+  3.561214331754463*^9, 3.5612143412938557`*^9}}],
+
+Cell[BoxData["11000000"], "Output",
+ CellChangeTimes->{
+  3.561214219302696*^9, {3.561214269062069*^9, 3.5612143418959923`*^9}}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"Table", "[", 
+  RowBox[{
+   RowBox[{"Export", "[", 
+    RowBox[{
+     RowBox[{"\"\</home/petter/projects/Trainer/data/cities/\>\"", "<>", 
+      RowBox[{"withSpaces", "[", 
+       RowBox[{"c", "[", 
+        RowBox[{"[", "3", "]"}], "]"}], "]"}], "<>", "\"\<_\>\"", "<>", 
+      RowBox[{"withSpaces", "[", 
+       RowBox[{"c", "[", 
+        RowBox[{"[", "1", "]"}], "]"}], "]"}], "<>", "\"\<.png\>\""}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Graphics", "[", 
+      RowBox[{"Join", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{"{", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"EdgeForm", "[", "Black", "]"}], ",", 
+            RowBox[{"Catch", "[", 
+             RowBox[{"If", "[", 
+              RowBox[{
+               RowBox[{"#", "\[Equal]", 
+                RowBox[{"c", "[", 
+                 RowBox[{"[", "3", "]"}], "]"}]}], ",", 
+               RowBox[{"RGBColor", "[", 
+                RowBox[{"0.1", ",", "0.8", ",", "0.1"}], "]"}], ",", 
+               RowBox[{"RGBColor", "[", 
+                RowBox[{"0.3", ",", "0.3", ",", "0.3"}], "]"}]}], "]"}], 
+             "]"}], ",", 
+            RowBox[{"CountryData", "[", 
+             RowBox[{"#", ",", "\"\<Polygon\>\""}], "]"}]}], 
+           "\[IndentingNewLine]", "\[IndentingNewLine]", 
+           "\[IndentingNewLine]", "}"}], "&"}], "/@", 
+         RowBox[{"CountryData", "[", 
+          RowBox[{"CountryData", "[", 
+           RowBox[{
+            RowBox[{"c", "[", 
+             RowBox[{"[", "3", "]"}], "]"}], ",", "\"\<Continent\>\""}], 
+           "]"}], "]"}]}], ",", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        
+        RowBox[{"{", 
+         RowBox[{"Inset", "[", 
+          RowBox[{
+           RowBox[{"Graphics", "[", 
+            RowBox[{"{", 
+             RowBox[{"Red", ",", 
+              RowBox[{"Thickness", "[", "0.01", "]"}], ",", 
+              RowBox[{"Line", "[", 
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{"{", 
+                  RowBox[{
+                   RowBox[{"-", "1"}], ",", "0"}], "}"}], ",", 
+                 RowBox[{"{", 
+                  RowBox[{"1", ",", "0"}], "}"}]}], "}"}], "]"}], ",", 
+              RowBox[{"Line", "[", 
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{"{", 
+                  RowBox[{"0", ",", 
+                   RowBox[{"-", "1"}]}], "}"}], ",", 
+                 RowBox[{"{", 
+                  RowBox[{"0", ",", "1"}], "}"}]}], "}"}], "]"}]}], "}"}], 
+            "]"}], ",", 
+           RowBox[{"Reverse", "[", 
+            RowBox[{"CityData", "[", 
+             RowBox[{"c", ",", "\"\<Coordinates\>\""}], "]"}], "]"}]}], "]"}],
+          "}"}]}], "\[IndentingNewLine]", "\[IndentingNewLine]", "]"}], "]"}],
+      ",", 
+     RowBox[{"ImageSize", "\[Rule]", "2000"}]}], "]"}], "\[IndentingNewLine]",
+    ",", 
+   RowBox[{"{", 
+    RowBox[{"c", ",", "cities"}], "}"}]}], "]"}]], "Input"]
+},
+WindowSize->{1366, 751},
+WindowMargins->{{0, Automatic}, {0, Automatic}},
+FrontEndVersion->"8.0 for Linux x86 (64-bit) (February 23, 2011)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 973, 20, 36, "Input"],
+Cell[1555, 44, 77, 1, 36, "Output"]
+}, Open  ]],
+Cell[1647, 48, 144, 3, 36, "Input"],
+Cell[CellGroupData[{
+Cell[1816, 55, 504, 11, 36, "Input"],
+Cell[2323, 68, 277, 3, 36, "Output"]
+}, Open  ]],
+Cell[2615, 74, 264, 6, 36, "Input"],
+Cell[2882, 82, 1618, 40, 60, "Input"],
+Cell[CellGroupData[{
+Cell[4525, 126, 187, 3, 36, "Input"],
+Cell[4715, 131, 128, 2, 36, "Output"]
+}, Open  ]],
+Cell[4858, 136, 3002, 75, 313, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)

@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       157,          7]
-NotebookDataLength[     18294,        408]
-NotebookOptionsPosition[     17940,        391]
-NotebookOutlinePosition[     18276,        406]
-CellTagsIndexPosition[     18233,        403]
+NotebookDataLength[     33891,        811]
+NotebookOptionsPosition[     33259,        785]
+NotebookOutlinePosition[     33595,        800]
+CellTagsIndexPosition[     33552,        797]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -387,6 +387,400 @@ Venezuela.png\"\>"}], "}"}]}], "}"}]], "Output",
    3.5537754970292788`*^9, 3.553775554616159*^9, 3.5537756399616013`*^9, 
    3.5537759662446737`*^9, 3.553776229368765*^9, 3.5537764964181004`*^9, 
    3.5537768907200336`*^9, 3.553777368335146*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"Select", "[", 
+     RowBox[{
+      RowBox[{"CountryData", "[", "cont", "]"}], ",", 
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{"CountryData", "[", 
+          RowBox[{"#", ",", "\"\<Population\>\""}], "]"}], ">", 
+         RowBox[{"10", "*", 
+          RowBox[{"10", "^", "6"}]}]}], "||", 
+        RowBox[{"cont", "\[Equal]", "\"\<Europe\>\""}]}], " ", "&"}]}], "]"}],
+     "}"}], "]"}], ",", 
+  RowBox[{"{", 
+   RowBox[{"cont", ",", 
+    RowBox[{"Select", "[", 
+     RowBox[{"CountryData", "[", "\"\<Continents\>\"", "]"}]}]}]}]}]], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ListPlot", "[", 
+  RowBox[{
+   RowBox[{"Sort", "[", 
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{"CountryData", "[", 
+       RowBox[{"j", ",", "\"\<Population\>\""}], "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"j", ",", 
+        RowBox[{"Flatten", "[", 
+         RowBox[{"Table", "[", 
+          RowBox[{
+           RowBox[{"Table", "[", 
+            RowBox[{"i", ",", 
+             RowBox[{"{", 
+              RowBox[{"i", ",", 
+               RowBox[{"CountryData", "[", "c", "]"}]}], "}"}]}], "]"}], ",", 
+           
+           RowBox[{"{", 
+            RowBox[{"c", ",", 
+             RowBox[{"Select", "[", 
+              RowBox[{
+               RowBox[{"CountryData", "[", "\"\<Continents\>\"", "]"}], ",", 
+               RowBox[{
+                RowBox[{"(", 
+                 RowBox[{
+                  RowBox[{"(", 
+                   RowBox[{"#", "\[NotEqual]", "\"\<Antarctica\>\""}], ")"}], 
+                  "&&", 
+                  RowBox[{"(", 
+                   RowBox[{"#", "\[NotEqual]", "\"\<Europe\>\""}], ")"}]}], 
+                 ")"}], " ", "&"}]}], "]"}]}], "}"}]}], "]"}], "]"}]}], 
+       "}"}]}], "]"}], "]"}], ",", 
+   RowBox[{"PlotRange", "\[Rule]", "All"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.561060323555419*^9, 3.561060460839069*^9}, {
+  3.561060501133541*^9, 3.561060530906823*^9}, {3.56106056913198*^9, 
+  3.5610606022472982`*^9}, {3.5610606631759644`*^9, 3.561060714951845*^9}, {
+  3.5610608846200857`*^9, 3.561060889211752*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{{}, 
+   {Hue[0.67, 0.6, 0.6], PointBox[CompressedData["
+1:eJxd0n9MlHUcB/BHpsmK8hrajnboXSldqISIcPgDHtAOEYLjUBEv5UBIJQOW
+eRVR+4am/FFJ+GOIjj1TK8NkZi1Sx3o2+kdnG8llmLMeWVmuNCpEzdqKz/t9
+fwQb++zF+3k/74PhqqzzV0dpmtbz3/foxddQFu5SnT/A/bmJjsbVd9I2XOde
+ejLuQMR23FMG7cBtPkI7ceu76UdwO07T03FHeugE9ntp9xgn4hZ8Sc+Sq25F
+nMTn++lk3KYwPQc3dIFOwY236LlyDe8gnYpbdY2eh/v1L3TaGKfj9t6gPbg9
+v9EZuJ4hej4+fyDiBbA5TC/EbbxJL0J+KuJM3JrbdBY/7x1a/78VrKb9xTwb
+PkCrMdZy4Li7zOG+J8ZlI18s1qePhxWsFk1gvkRsXqQVrN2J5E8iT4lhDtvT
+ac2L9018gDk9bhLzXOyX0wrW2m3M8X9uPBzLHNYTaS0PnjqFOazV2JkvEwe/
+oRU8UBfHPF9sKQdz2CiaxrwAn/cureiAk/lT2D9JK7j+oRnMC8W2BFrB+v5I
+XiT2ZTzGHLba3Mx94uMGrcPWpEQ+Dyf30ybs+W4O+8V4f2kK+/CGs3PZh7Wm
+VPbhpT+lse/H3yMqnX347QYP+3CbK4N9eKB7Pvsl4pakTPZh41wW+7DP0tmH
+q/YvYX+5ODpM63D4cS/78N/eXPZh9y5aW4G/R1ce+/DQSVrBLb3L2IfPHStg
+fyV+P1XIPvxZfhH78FS7j33Yu4DWSsUJNbQOd35FK7gquZh9WP+Y1laJu4Zp
+HT642c8+3Pl5Cftwy3VaKxP/OnMF+/Cb81ayD3sW0yYcNkrZXy12v7WKfbjt
+MK1g33HahHffprWA2H65jH24xbuafdh/izbhpH9o7WlxztkA+7C6fw37YjXY
+VM4+8qNZQfbXiAvvrWAfjmmlFdx/kTbhP13r2F8rPlBL6/AxRSv4wXbahMd/
+FOmXi2vPRPrwJ2ur2YcT/6BNOBy/gf2g+MwO2gnPyNvI98HlG+kgHOut4fvh
+CZuehQ047tNN3IMdN56DLfjH+2q5XyHOLaKd8CFbHffFqqy0nvvwiON57uP5
+ndGbuQ9vSaNN+FqItuDhrS9wv1LeF2ilnXBlaAv3xWbJTToo1gL+EPfx/Owr
+tIHccr3IfeQfptIW8u6JL3N/nfjd1xu4D//eQevw+ROvcF+sDn9BK+SzXI3c
+R778JdqEy6Ne4z687QqtVUn/1XjFfbEacdO62LT/QAeRO6q2ch+5u5E28L5Q
+2zbuwzENb3AfvhS7nfvVo9abnTu4L9Z2xTZzH7ZNpoNiKzyzhfvw95m0ITar
+r77DfbHRGdPKfewNPrqb+8/I+7fn0E6x82rGHu6LjevFe7mPfGFFO/fFlju3
+g/vi5A9OG9wX13ddPsh9se/bfYe4v37UfWn3vMd9cfKF/Pe5L7Zd6j7KfXHO
+lPUnuC/W+uznuS9OPTI7nP0v5cji+w==
+     "]]}, {}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->True,
+  AxesOrigin->{0, 0},
+  ImageSize->{717.5999999999998, Automatic},
+  PlotRange->{All, All},
+  PlotRangeClipping->True,
+  PlotRangePadding->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{{3.5610605727277803`*^9, 3.5610606031181507`*^9}, {
+   3.56106067489472*^9, 3.561060715570176*^9}, 3.5610608897443657`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Grid", "[", 
+  RowBox[{
+   RowBox[{"Reverse", "[", 
+    RowBox[{"Sort", "[", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"CountryData", "[", 
+          RowBox[{"j", ",", "\"\<Population\>\""}], "]"}], ",", "j"}], "}"}], 
+       ",", 
+       RowBox[{"{", 
+        RowBox[{"j", ",", 
+         RowBox[{"Flatten", "[", 
+          RowBox[{"Table", "[", 
+           RowBox[{
+            RowBox[{"Table", "[", 
+             RowBox[{"i", ",", 
+              RowBox[{"{", 
+               RowBox[{"i", ",", 
+                RowBox[{"CountryData", "[", "c", "]"}]}], "}"}]}], "]"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"c", ",", 
+              RowBox[{"Select", "[", 
+               RowBox[{
+                RowBox[{"CountryData", "[", "\"\<Continents\>\"", "]"}], ",", 
+                
+                RowBox[{
+                 RowBox[{"(", 
+                  RowBox[{"(", 
+                   RowBox[{"#", "\[NotEqual]", "\"\<Antarctica\>\""}], ")"}], 
+                  ")"}], " ", "&"}]}], "]"}]}], "}"}]}], "]"}], "]"}]}], 
+        "}"}]}], "]"}], "]"}], "]"}], ",", 
+   RowBox[{"Frame", "\[Rule]", "All"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.561061192130178*^9, 3.56106130269099*^9}, 
+   3.5610614083531933`*^9}],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {"1.354146`*^9", "\<\"China\"\>"},
+    {"1.214464`*^9", "\<\"India\"\>"},
+    {"3.08745538`*^8", "\<\"UnitedStates\"\>"},
+    {"2.32517`*^8", "\<\"Indonesia\"\>"},
+    {"1.95423`*^8", "\<\"Brazil\"\>"},
+    {"1.84753`*^8", "\<\"Pakistan\"\>"},
+    {"1.64425`*^8", "\<\"Bangladesh\"\>"},
+    {"1.58259`*^8", "\<\"Nigeria\"\>"},
+    {"1.40367`*^8", "\<\"Russia\"\>"},
+    {"1.26995`*^8", "\<\"Japan\"\>"},
+    {"1.10645`*^8", "\<\"Mexico\"\>"},
+    {"9.3617`*^7", "\<\"Philippines\"\>"},
+    {"8.9029`*^7", "\<\"Vietnam\"\>"},
+    {"8.4976`*^7", "\<\"Ethiopia\"\>"},
+    {"8.4474`*^7", "\<\"Egypt\"\>"},
+    {"8.2057`*^7", "\<\"Germany\"\>"},
+    {"7.5705`*^7", "\<\"Turkey\"\>"},
+    {"7.5078`*^7", "\<\"Iran\"\>"},
+    {"6.8139`*^7", "\<\"Thailand\"\>"},
+    {"6.7827`*^7", "\<\"DemocraticRepublicCongo\"\>"},
+    {"6.4768389`*^7", "\<\"France\"\>"},
+    {"6.1899`*^7", "\<\"UnitedKingdom\"\>"},
+    {"6.0098`*^7", "\<\"Italy\"\>"},
+    {"5.0496`*^7", "\<\"Myanmar\"\>"},
+    {"5.0492`*^7", "\<\"SouthAfrica\"\>"},
+    {"4.8501`*^7", "\<\"SouthKorea\"\>"},
+    {"4.63`*^7", "\<\"Colombia\"\>"},
+    {"4.5433`*^7", "\<\"Ukraine\"\>"},
+    {"4.5317`*^7", "\<\"Spain\"\>"},
+    {"4.504`*^7", "\<\"Tanzania\"\>"},
+    {"4.3192`*^7", "\<\"Sudan\"\>"},
+    {"4.0863`*^7", "\<\"Kenya\"\>"},
+    {"4.0666`*^7", "\<\"Argentina\"\>"},
+    {"3.8038`*^7", "\<\"Poland\"\>"},
+    {"3.5423`*^7", "\<\"Algeria\"\>"},
+    {"3.389`*^7", "\<\"Canada\"\>"},
+    {"3.3796`*^7", "\<\"Uganda\"\>"},
+    {"3.2381`*^7", "\<\"Morocco\"\>"},
+    {"3.1467`*^7", "\<\"Iraq\"\>"},
+    {"2.9853`*^7", "\<\"Nepal\"\>"},
+    {"2.9496`*^7", "\<\"Peru\"\>"},
+    {"2.9117`*^7", "\<\"Afghanistan\"\>"},
+    {"2.9044`*^7", "\<\"Venezuela\"\>"},
+    {"2.7914`*^7", "\<\"Malaysia\"\>"},
+    {"2.7794`*^7", "\<\"Uzbekistan\"\>"},
+    {"2.6246`*^7", "\<\"SaudiArabia\"\>"},
+    {"2.4333`*^7", "\<\"Ghana\"\>"},
+    {"2.4256`*^7", "\<\"Yemen\"\>"},
+    {"2.3991`*^7", "\<\"NorthKorea\"\>"},
+    {"2.3406`*^7", "\<\"Mozambique\"\>"},
+    {"2.3024956`*^7", "\<\"Taiwan\"\>"},
+    {"2.2505`*^7", "\<\"Syria\"\>"},
+    {"2.1571`*^7", "\<\"IvoryCoast\"\>"},
+    {"2.1512`*^7", "\<\"Australia\"\>"},
+    {"2.119`*^7", "\<\"Romania\"\>"},
+    {"2.041`*^7", "\<\"SriLanka\"\>"},
+    {"2.0146`*^7", "\<\"Madagascar\"\>"},
+    {"1.9958`*^7", "\<\"Cameroon\"\>"},
+    {"1.8993`*^7", "\<\"Angola\"\>"},
+    {"1.7135`*^7", "\<\"Chile\"\>"},
+    {"1.6653`*^7", "\<\"Netherlands\"\>"},
+    {"1.6287`*^7", "\<\"BurkinaFaso\"\>"},
+    {"1.5891`*^7", "\<\"Niger\"\>"},
+    {"1.5753`*^7", "\<\"Kazakhstan\"\>"},
+    {"1.5692`*^7", "\<\"Malawi\"\>"},
+    {"1.5053`*^7", "\<\"Cambodia\"\>"},
+    {"1.4377`*^7", "\<\"Guatemala\"\>"},
+    {"1.3775`*^7", "\<\"Ecuador\"\>"},
+    {"1.3323`*^7", "\<\"Mali\"\>"},
+    {"1.3257`*^7", "\<\"Zambia\"\>"},
+    {"1.2861`*^7", "\<\"Senegal\"\>"},
+    {"1.2644`*^7", "\<\"Zimbabwe\"\>"},
+    {"1.1506`*^7", "\<\"Chad\"\>"},
+    {"1.1204`*^7", "\<\"Cuba\"\>"},
+    {"1.1183`*^7", "\<\"Greece\"\>"},
+    {"1.0732`*^7", "\<\"Portugal\"\>"},
+    {"1.0698`*^7", "\<\"Belgium\"\>"},
+    {"1.0411`*^7", "\<\"CzechRepublic\"\>"},
+    {"1.0374`*^7", "\<\"Tunisia\"\>"},
+    {"1.0324`*^7", "\<\"Guinea\"\>"},
+    {"1.0277`*^7", "\<\"Rwanda\"\>"},
+    {"1.0225`*^7", "\<\"DominicanRepublic\"\>"},
+    {"1.0188`*^7", "\<\"Haiti\"\>"},
+    {"1.0031`*^7", "\<\"Bolivia\"\>"},
+    {"9.973`*^6", "\<\"Hungary\"\>"},
+    {"9.588`*^6", "\<\"Belarus\"\>"},
+    {"9.359`*^6", "\<\"Somalia\"\>"},
+    {"9.293`*^6", "\<\"Sweden\"\>"},
+    {"9.212`*^6", "\<\"Benin\"\>"},
+    {"8.934`*^6", "\<\"Azerbaijan\"\>"},
+    {"8.519`*^6", "\<\"Burundi\"\>"},
+    {"8.387`*^6", "\<\"Austria\"\>"},
+    {"8.26049`*^6", "\<\"SouthSudan\"\>"},
+    {"7.616`*^6", "\<\"Honduras\"\>"},
+    {"7.595`*^6", "\<\"Switzerland\"\>"},
+    {"7.497`*^6", "\<\"Bulgaria\"\>"},
+    {"7.344847`*^6", "\<\"Serbia\"\>"},
+    {"7.285`*^6", "\<\"Israel\"\>"},
+    {"7.075`*^6", "\<\"Tajikistan\"\>"},
+    {"7.069`*^6", "\<\"HongKong\"\>"},
+    {"6.888`*^6", "\<\"PapuaNewGuinea\"\>"},
+    {"6.78`*^6", "\<\"Togo\"\>"},
+    {"6.546`*^6", "\<\"Libya\"\>"},
+    {"6.472`*^6", "\<\"Jordan\"\>"},
+    {"6.46`*^6", "\<\"Paraguay\"\>"},
+    {"6.436`*^6", "\<\"Laos\"\>"},
+    {"6.194`*^6", "\<\"ElSalvador\"\>"},
+    {"5.836`*^6", "\<\"SierraLeone\"\>"},
+    {"5.822`*^6", "\<\"Nicaragua\"\>"},
+    {"5.55`*^6", "\<\"Kyrgyzstan\"\>"},
+    {"5.481`*^6", "\<\"Denmark\"\>"},
+    {"5.412`*^6", "\<\"Slovakia\"\>"},
+    {"5.346`*^6", "\<\"Finland\"\>"},
+    {"5.224`*^6", "\<\"Eritrea\"\>"},
+    {"5.177`*^6", "\<\"Turkmenistan\"\>"},
+    {"4.855`*^6", "\<\"Norway\"\>"},
+    {"4.837`*^6", "\<\"Singapore\"\>"},
+    {"4.707`*^6", "\<\"UnitedArabEmirates\"\>"},
+    {"4.64`*^6", "\<\"CostaRica\"\>"},
+    {"4.589`*^6", "\<\"Ireland\"\>"},
+    {"4.506`*^6", "\<\"CentralAfricanRepublic\"\>"},
+    {"4.41`*^6", "\<\"Croatia\"\>"},
+    {"4.409`*^6", "\<\"WestBank\"\>"},
+    {"4.303`*^6", "\<\"NewZealand\"\>"},
+    {"4.255`*^6", "\<\"Lebanon\"\>"},
+    {"4.219`*^6", "\<\"Georgia\"\>"},
+    {"4.102`*^6", "\<\"Liberia\"\>"},
+    {"3.998`*^6", "\<\"PuertoRico\"\>"},
+    {"3.76`*^6", "\<\"BosniaHerzegovina\"\>"},
+    {"3.759`*^6", "\<\"RepublicCongo\"\>"},
+    {"3.576`*^6", "\<\"Moldova\"\>"},
+    {"3.508`*^6", "\<\"Panama\"\>"},
+    {"3.372`*^6", "\<\"Uruguay\"\>"},
+    {"3.366`*^6", "\<\"Mauritania\"\>"},
+    {"3.255`*^6", "\<\"Lithuania\"\>"},
+    {"3.169`*^6", "\<\"Albania\"\>"},
+    {"3.09`*^6", "\<\"Armenia\"\>"},
+    {"3.051`*^6", "\<\"Kuwait\"\>"},
+    {"2.905`*^6", "\<\"Oman\"\>"},
+    {"2.73`*^6", "\<\"Jamaica\"\>"},
+    {"2.701`*^6", "\<\"Mongolia\"\>"},
+    {"2.424528`*^6", "\<\"Kosovo\"\>"},
+    {"2.24`*^6", "\<\"Latvia\"\>"},
+    {"2.212`*^6", "\<\"Namibia\"\>"},
+    {"2.084`*^6", "\<\"Lesotho\"\>"},
+    {"2.043`*^6", "\<\"Macedonia\"\>"},
+    {"2.025`*^6", "\<\"Slovenia\"\>"},
+    {"1.978`*^6", "\<\"Botswana\"\>"},
+    {"1.751`*^6", "\<\"Gambia\"\>"},
+    {"1.647`*^6", "\<\"GuineaBissau\"\>"},
+    {"1.604238`*^6", "\<\"GazaStrip\"\>"},
+    {"1.508`*^6", "\<\"Qatar\"\>"},
+    {"1.501`*^6", "\<\"Gabon\"\>"},
+    {"1.344`*^6", "\<\"TrinidadTobago\"\>"},
+    {"1.339`*^6", "\<\"Estonia\"\>"},
+    {"1.297`*^6", "\<\"Mauritius\"\>"},
+    {"1.202`*^6", "\<\"Swaziland\"\>"},
+    {"1.171`*^6", "\<\"EastTimor\"\>"},
+    {"879000.`", "\<\"Djibouti\"\>"},
+    {"854000.`", "\<\"Fiji\"\>"},
+    {"807000.`", "\<\"Bahrain\"\>"},
+    {"806000.`", "\<\"Reunion\"\>"},
+    {"786873.`", "\<\"Cyprus\"\>"},
+    {"761000.`", "\<\"Guyana\"\>"},
+    {"708000.`", "\<\"Bhutan\"\>"},
+    {"693000.`", "\<\"EquatorialGuinea\"\>"},
+    {"691000.`", "\<\"Comoros\"\>"},
+    {"626000.`", "\<\"Montenegro\"\>"},
+    {"548000.`", "\<\"Macau\"\>"},
+    {"536000.`", "\<\"SolomonIslands\"\>"},
+    {"524000.`", "\<\"Suriname\"\>"},
+    {"513000.`", "\<\"CapeVerde\"\>"},
+    {"492000.`", "\<\"Luxembourg\"\>"},
+    {"467000.`", "\<\"Guadeloupe\"\>"},
+    {"416758.`", "\<\"WesternSahara\"\>"},
+    {"410000.`", "\<\"Malta\"\>"},
+    {"407000.`", "\<\"Brunei\"\>"},
+    {"400000.`", "\<\"Martinique\"\>"},
+    {"346000.`", "\<\"Bahamas\"\>"},
+    {"329000.`", "\<\"Iceland\"\>"},
+    {"314000.`", "\<\"Maldives\"\>"},
+    {"313000.`", "\<\"Belize\"\>"},
+    {"272000.`", "\<\"FrenchPolynesia\"\>"},
+    {"257000.`", "\<\"Barbados\"\>"},
+    {"254000.`", "\<\"NewCaledonia\"\>"},
+    {"246000.`", "\<\"Vanuatu\"\>"},
+    {"231139.`", "\<\"Mayotte\"\>"},
+    {"231000.`", "\<\"FrenchGuiana\"\>"},
+    {"180000.`", "\<\"Guam\"\>"},
+    {"179000.`", "\<\"Samoa\"\>"},
+    {"174000.`", "\<\"SaintLucia\"\>"},
+    {"165000.`", "\<\"SaoTomePrincipe\"\>"},
+    {"140794.`", "\<\"Curacao\"\>"},
+    {"111000.`", "\<\"Micronesia\"\>"},
+    {"109000.`", "\<\"UnitedStatesVirginIslands\"\>"},
+    {"109000.`", "\<\"SaintVincentGrenadines\"\>"},
+    {"107000.`", "\<\"Aruba\"\>"},
+    {"104000.`", "\<\"Tonga\"\>"},
+    {"104000.`", "\<\"Grenada\"\>"},
+    {"100000.`", "\<\"Kiribati\"\>"},
+    {"91812.`", "\<\"Jersey\"\>"},
+    {"89000.`", "\<\"AntiguaBarbuda\"\>"},
+    {"88000.`", "\<\"NorthernMarianaIslands\"\>"},
+    {"87000.`", "\<\"Andorra\"\>"},
+    {"85000.`", "\<\"Seychelles\"\>"},
+    {"76913.`", "\<\"IsleOfMan\"\>"},
+    {"67000.`", "\<\"Dominica\"\>"},
+    {"66432.`", "\<\"AmericanSamoa\"\>"},
+    {"65632.`", "\<\"Guernsey\"\>"},
+    {"65000.`", "\<\"Bermuda\"\>"},
+    {"63000.`", "\<\"MarshallIslands\"\>"},
+    {"57000.`", "\<\"Greenland\"\>"},
+    {"57000.`", "\<\"CaymanIslands\"\>"},
+    {"52000.`", "\<\"SaintKittsNevis\"\>"},
+    {"50000.`", "\<\"FaroeIslands\"\>"},
+    {"37429.`", "\<\"SintMaarten\"\>"},
+    {"36000.`", "\<\"Liechtenstein\"\>"},
+    {"33000.`", "\<\"TurksCaicosIslands\"\>"},
+    {"33000.`", "\<\"Monaco\"\>"},
+    {"32000.`", "\<\"SanMarino\"\>"},
+    {"28877.`", "\<\"Gibraltar\"\>"},
+    {"23000.`", "\<\"BritishVirginIslands\"\>"},
+    {"21000.`", "\<\"Palau\"\>"},
+    {"20000.`", "\<\"CookIslands\"\>"},
+    {"15343.`", "\<\"WallisFutuna\"\>"},
+    {"15000.`", "\<\"Anguilla\"\>"},
+    {"10000.`", "\<\"Tuvalu\"\>"},
+    {"10000.`", "\<\"Nauru\"\>"},
+    {"7670.`", "\<\"SaintHelena\"\>"},
+    {"7070.`", "\<\"SaintPierreMiquelon\"\>"},
+    {"6000.`", "\<\"Montserrat\"\>"},
+    {"3140.`", "\<\"FalklandIslands\"\>"},
+    {"2495.`", "\<\"Svalbard\"\>"},
+    {"2141.`", "\<\"NorfolkIsland\"\>"},
+    {"1462.`", "\<\"ChristmasIsland\"\>"},
+    {"1416.`", "\<\"Tokelau\"\>"},
+    {"1000.`", "\<\"Niue\"\>"},
+    {"826.`", "\<\"VaticanCity\"\>"},
+    {"605.`", "\<\"CocosKeelingIslands\"\>"},
+    {"48.`", "\<\"PitcairnIslands\"\>"}
+   },
+   AutoDelete->False,
+   GridBoxFrame->{"Columns" -> {{True}}, "Rows" -> {{True}}},
+   GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+  "Grid"]], "Output",
+ CellChangeTimes->{{3.561061225492218*^9, 3.5610613036681147`*^9}, 
+   3.5610614090448427`*^9}]
 }, Open  ]]
 },
 WindowSize->{1366, 751},
@@ -409,6 +803,15 @@ Cell[557, 20, 1119, 31, 129, "Input"],
 Cell[CellGroupData[{
 Cell[1701, 55, 4816, 108, 359, "Input"],
 Cell[6520, 165, 11404, 223, 2820, "Output"]
+}, Open  ]],
+Cell[17939, 391, 623, 19, 60, "Input"],
+Cell[CellGroupData[{
+Cell[18587, 414, 1515, 38, 106, "Input"],
+Cell[20105, 454, 1991, 37, 558, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[22133, 496, 1309, 36, 129, "Input"],
+Cell[23445, 534, 9798, 248, 5335, "Output"]
 }, Open  ]]
 }
 ]

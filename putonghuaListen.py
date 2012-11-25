@@ -3,6 +3,7 @@ import subprocess
 import question
 from colorPrint import printInCol
 from makePListenSounds import charToFileName
+
 class PutonghuaListen(question.Question):
     def __init__(self, char, pinyin, english):
         self._char=char
@@ -31,3 +32,5 @@ class PutonghuaListen(question.Question):
                 stdout = subprocess.PIPE, stderr = subprocess.PIPE)
     def getId(self):
         return 'putonghuaListen/'+self._char
+
+PutonghuaListen.hasSound=True

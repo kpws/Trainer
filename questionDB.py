@@ -7,7 +7,7 @@ askAgainCorrect = 1*60*60 #sec
 askAgainWrong = 4*60 #sec
 knowTime = 3*24*60*60 #sec
 actuallyKnownRatio=0.95
-conf=0.95
+conf=0.80
 actuallyKnownTime= 2*7*24*60*60 #sec
 auxWrongTime=365*24*60*60 #sec
 
@@ -69,6 +69,12 @@ class QuestionDB():
         self.makeSets(questions)
 
     def writeHist(self, qId, result, outputDiff=True, ct=None, writeFile=True):
+        if not qId in self.tot:
+            print("A question not in current question set was added to answered history.")
+            if outputDiff:
+                return (0,0)
+            else:
+                return
         if ct==None:
             ct=time()
         if writeFile:

@@ -1,0 +1,433 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     18458,        424]
+NotebookOptionsPosition[     17767,        396]
+NotebookOutlinePosition[     18103,        411]
+CellTagsIndexPosition[     18060,        408]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"withSpaces", "[", "s_", "]"}], ":=", 
+  RowBox[{"StringJoin", "[", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Join", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"Characters", "[", "s", "]"}], "[", 
+        RowBox[{"[", "1", "]"}], "]"}], "}"}], ",", 
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{"UpperCaseQ", "[", 
+           RowBox[{
+            RowBox[{"Characters", "[", "s", "]"}], "[", 
+            RowBox[{"[", "i", "]"}], "]"}], "]"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"\"\< \>\"", ",", 
+            RowBox[{
+             RowBox[{"Characters", "[", "s", "]"}], "[", 
+             RowBox[{"[", "i", "]"}], "]"}]}], "}"}], ",", 
+          RowBox[{
+           RowBox[{"Characters", "[", "s", "]"}], "[", 
+           RowBox[{"[", "i", "]"}], "]"}]}], "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"i", ",", "2", ",", 
+          RowBox[{"Length", "[", 
+           RowBox[{"Characters", "[", "s", "]"}], "]"}]}], "}"}]}], "]"}]}], 
+     "]"}], "]"}], "]"}]}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"bigCities", "=", 
+   RowBox[{"Select", "[", 
+    RowBox[{
+     RowBox[{"CityData", "[", "]"}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"CityData", "[", 
+        RowBox[{"#", ",", "\"\<Population\>\""}], "]"}], ">", 
+       RowBox[{"2", "*", 
+        RowBox[{"10", "^", "6"}]}]}], "&"}]}], "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.5611127873733063`*^9, 3.561112815349697*^9}, 
+   3.561112912635333*^9, 3.561113290379201*^9, {3.561114830181086*^9, 
+   3.561114832134158*^9}, {3.5611148807983847`*^9, 3.561114881946426*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"cities", "=", 
+   RowBox[{"Sort", "[", 
+    RowBox[{"Table", "[", 
+     RowBox[{"c", ",", 
+      RowBox[{"{", 
+       RowBox[{"c", ",", 
+        RowBox[{"Select", "[", 
+         RowBox[{"bigCities", ",", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"CityData", "[", 
+             RowBox[{"#", ",", "\"\<Population\>\""}], "]"}], ">", 
+            RowBox[{
+             RowBox[{"CountryData", "[", 
+              RowBox[{
+               RowBox[{"#", "[", 
+                RowBox[{"[", "3", "]"}], "]"}], ",", "\"\<Population\>\""}], 
+              "]"}], "*", "0.009"}]}], "&"}]}], "]"}]}], "}"}]}], "]"}], 
+    "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.5611109525194273`*^9, 3.561110953602334*^9}, 
+   3.561111041853992*^9, {3.561112424328257*^9, 3.5611124589598207`*^9}, {
+   3.561112605116898*^9, 3.5611126057199583`*^9}, {3.561112683864933*^9, 
+   3.561112728858489*^9}, {3.561112833705468*^9, 3.5611128580561237`*^9}, {
+   3.5611128896517982`*^9, 3.561112889772419*^9}, {3.5611129807416353`*^9, 
+   3.561112999044203*^9}, {3.561113056825733*^9, 3.561113098332123*^9}, 
+   3.561113162877921*^9, {3.5611132063333*^9, 3.561113207193962*^9}, {
+   3.561113351118669*^9, 3.561113352567183*^9}, {3.56111338428686*^9, 
+   3.5611134359709053`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Length", "[", "cities", "]"}]], "Input",
+ CellChangeTimes->{{3.561113416275651*^9, 3.56111342473211*^9}, {
+  3.561113477845985*^9, 3.5611134814134893`*^9}, {3.561113544542553*^9, 
+  3.561113546155108*^9}}],
+
+Cell[BoxData["93"], "Output",
+ CellChangeTimes->{{3.561113425812361*^9, 3.561113439021709*^9}, 
+   3.5611134819257402`*^9, 3.561114277021744*^9, 3.561114838140213*^9, 
+   3.561115451497884*^9, {3.561115601997655*^9, 3.5611156054541903`*^9}, 
+   3.5611156494831133`*^9, 3.561115683247561*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"cities", "=", 
+   RowBox[{"Select", "[", 
+    RowBox[{"cities", ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"Sum", "[", 
+        RowBox[{
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{"#", "\[Equal]", "j"}], ",", "0", ",", 
+           RowBox[{"If", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"Norm", "[", 
+               RowBox[{
+                RowBox[{"CityData", "[", 
+                 RowBox[{"#", ",", "\"\<Coordinates\>\""}], "]"}], "-", 
+                RowBox[{"CityData", "[", 
+                 RowBox[{"j", ",", "\"\<Coordinates\>\""}], "]"}]}], "]"}], 
+              "<", "0.3"}], ",", 
+             RowBox[{"If", "[", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"CityData", "[", 
+                 RowBox[{"#", ",", "\"\<Population\>\""}], "]"}], "<", 
+                RowBox[{"CityData", "[", 
+                 RowBox[{"j", ",", "\"\<Population\>\""}], "]"}]}], ",", "1", 
+               ",", "0"}], "]"}], ",", "0"}], "]"}]}], "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"j", ",", "cities"}], "}"}]}], "]"}], "==", "0"}], "&"}]}], 
+    "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.5611146315905437`*^9, 3.561114648983663*^9}, {
+  3.5611153266430607`*^9, 3.561115503303368*^9}, {3.561115540544785*^9, 
+  3.561115673832892*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Length", "[", "cities", "]"}]], "Input"],
+
+Cell[BoxData["90"], "Output",
+ CellChangeTimes->{{3.5611155927465553`*^9, 3.5611156165937443`*^9}, {
+   3.561115647223834*^9, 3.5611156516012278`*^9}, 3.561115686315702*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Table", "[", 
+  RowBox[{
+   RowBox[{"Export", "[", 
+    RowBox[{
+     RowBox[{"\"\</home/petter/projects/Trainer/data/cities/\>\"", "<>", 
+      RowBox[{"withSpaces", "[", 
+       RowBox[{"c", "[", 
+        RowBox[{"[", "3", "]"}], "]"}], "]"}], "<>", "\"\<_\>\"", "<>", 
+      RowBox[{"withSpaces", "[", 
+       RowBox[{"c", "[", 
+        RowBox[{"[", "1", "]"}], "]"}], "]"}], "<>", "\"\<.png\>\""}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Graphics", "[", 
+      RowBox[{"Join", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{"{", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"EdgeForm", "[", "Black", "]"}], ",", 
+            RowBox[{"Catch", "[", 
+             RowBox[{"If", "[", 
+              RowBox[{
+               RowBox[{"#", "\[Equal]", 
+                RowBox[{"c", "[", 
+                 RowBox[{"[", "3", "]"}], "]"}]}], ",", 
+               RowBox[{"RGBColor", "[", 
+                RowBox[{"0.1", ",", "0.8", ",", "0.1"}], "]"}], ",", 
+               RowBox[{"RGBColor", "[", 
+                RowBox[{"0.3", ",", "0.3", ",", "0.3"}], "]"}]}], "]"}], 
+             "]"}], ",", 
+            RowBox[{"CountryData", "[", 
+             RowBox[{"#", ",", "\"\<Polygon\>\""}], "]"}]}], 
+           "\[IndentingNewLine]", "\[IndentingNewLine]", 
+           "\[IndentingNewLine]", "}"}], "&"}], "/@", 
+         RowBox[{"CountryData", "[", 
+          RowBox[{"CountryData", "[", 
+           RowBox[{
+            RowBox[{"c", "[", 
+             RowBox[{"[", "3", "]"}], "]"}], ",", "\"\<Continent\>\""}], 
+           "]"}], "]"}]}], ",", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        
+        RowBox[{"{", 
+         RowBox[{"Inset", "[", 
+          RowBox[{
+           RowBox[{"Graphics", "[", 
+            RowBox[{"{", 
+             RowBox[{"Red", ",", 
+              RowBox[{"Thickness", "[", "0.01", "]"}], ",", 
+              RowBox[{"Line", "[", 
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{"{", 
+                  RowBox[{
+                   RowBox[{"-", "1"}], ",", "0"}], "}"}], ",", 
+                 RowBox[{"{", 
+                  RowBox[{"1", ",", "0"}], "}"}]}], "}"}], "]"}], ",", 
+              RowBox[{"Line", "[", 
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{"{", 
+                  RowBox[{"0", ",", 
+                   RowBox[{"-", "1"}]}], "}"}], ",", 
+                 RowBox[{"{", 
+                  RowBox[{"0", ",", "1"}], "}"}]}], "}"}], "]"}]}], "}"}], 
+            "]"}], ",", 
+           RowBox[{"Reverse", "[", 
+            RowBox[{"CityData", "[", 
+             RowBox[{"c", ",", "\"\<Coordinates\>\""}], "]"}], "]"}]}], "]"}],
+          "}"}]}], "\[IndentingNewLine]", "\[IndentingNewLine]", "]"}], "]"}],
+      ",", 
+     RowBox[{"ImageSize", "\[Rule]", "2000"}]}], "]"}], "\[IndentingNewLine]",
+    ",", 
+   RowBox[{"{", 
+    RowBox[{"c", ",", "cities"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.553774050602192*^9, 3.553774058374564*^9}, {
+   3.553774130849827*^9, 3.553774144419339*^9}, {3.553774186641814*^9, 
+   3.553774214478158*^9}, {3.553774463739027*^9, 3.553774497174621*^9}, {
+   3.553774604435761*^9, 3.5537746368222933`*^9}, {3.5537746715675097`*^9, 
+   3.553774672236891*^9}, {3.553774705408208*^9, 3.5537747244587593`*^9}, {
+   3.553774915045578*^9, 3.553774916697115*^9}, 3.5537750716332693`*^9, {
+   3.553775134470632*^9, 3.5537752066294413`*^9}, {3.553775263531084*^9, 
+   3.553775297037161*^9}, {3.553775328531744*^9, 3.553775383735086*^9}, {
+   3.553775439932371*^9, 3.5537754958072968`*^9}, {3.55377553220228*^9, 
+   3.5537756387399282`*^9}, {3.5537758096167307`*^9, 3.553775831394328*^9}, 
+   3.5537759906538773`*^9, {3.553776024219939*^9, 3.5537760288941317`*^9}, {
+   3.5537762550646353`*^9, 3.553776309467113*^9}, {3.5537766215123863`*^9, 
+   3.5537766995118732`*^9}, 3.553777173940914*^9, {3.5611109475659637`*^9, 
+   3.561110949280162*^9}, {3.561113499703019*^9, 3.5611135004121513`*^9}, {
+   3.561113580091082*^9, 3.5611136144437037`*^9}, {3.561113644623714*^9, 
+   3.561113802760537*^9}, 3.561113893221607*^9, {3.561113944923966*^9, 
+   3.56111398407797*^9}, {3.561114114658002*^9, 3.561114120315591*^9}, 
+   3.561114218796846*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"/home/petter/projects/Trainer/data/cities/Ivory \
+Coast_Abidjan.png\"\>", 
+   ",", "\<\"/home/petter/projects/Trainer/data/cities/Ethiopia_Addis \
+Ababa.png\"\>", 
+   ",", "\<\"/home/petter/projects/Trainer/data/cities/Syria_Aleppo.png\"\>", 
+   ",", "\<\"/home/petter/projects/Trainer/data/cities/Egypt_Alexandria.png\"\
+\>", ",", \
+"\<\"/home/petter/projects/Trainer/data/cities/Algeria_Algiers.png\"\>", 
+   ",", "\<\"/home/petter/projects/Trainer/data/cities/Turkey_Ankara.png\"\>",
+    ",", "\<\"/home/petter/projects/Trainer/data/cities/Iraq_Baghdad.png\"\>",
+    ",", "\<\"/home/petter/projects/Trainer/data/cities/Azerbaijan_Baku.png\"\
+\>", ",", \
+"\<\"/home/petter/projects/Trainer/data/cities/Indonesia_Bandung.png\"\>", 
+   ",", "\<\"/home/petter/projects/Trainer/data/cities/Thailand_Bangkok.png\"\
+\>", ",", \
+"\<\"/home/petter/projects/Trainer/data/cities/China_Beijing.png\"\>", 
+   ",", "\<\"/home/petter/projects/Trainer/data/cities/Lebanon_Beirut.png\"\>\
+", ",", "\<\"/home/petter/projects/Trainer/data/cities/Brazil_Belo \
+Horizonte.png\"\>", 
+   ",", "\<\"/home/petter/projects/Trainer/data/cities/Germany_Berlin.png\"\>\
+", ",", "\<\"/home/petter/projects/Trainer/data/cities/Colombia_Bogota.png\"\>\
+", ",", "\<\"/home/petter/projects/Trainer/data/cities/India_Bombay.png\"\>", 
+   ",", "\<\"/home/petter/projects/Trainer/data/cities/Brazil_Brasilia.png\"\>\
+", ",", "\<\"/home/petter/projects/Trainer/data/cities/Australia_Brisbane.png\
+\"\>", ",", "\<\"/home/petter/projects/Trainer/data/cities/Argentina_Buenos \
+Aires.png\"\>", 
+   ",", "\<\"/home/petter/projects/Trainer/data/cities/Egypt_Cairo.png\"\>", 
+   ",", "\<\"/home/petter/projects/Trainer/data/cities/Colombia_Cali.png\"\>",
+    ",", "\<\"/home/petter/projects/Trainer/data/cities/South Africa_Cape \
+Town.png\"\>", 
+   ",", "\<\"/home/petter/projects/Trainer/data/cities/Venezuela_Caracas.png\"\
+\>", ",", \
+"\<\"/home/petter/projects/Trainer/data/cities/Morocco_Casablanca.png\"\>", 
+   ",", "\<\"/home/petter/projects/Trainer/data/cities/Bangladesh_Chittagong.\
+png\"\>", 
+   ",", "\<\"/home/petter/projects/Trainer/data/cities/Senegal_Dakar.png\"\>",
+    ",", "\<\"/home/petter/projects/Trainer/data/cities/Tanzania_Dar Es \
+Salaam.png\"\>", 
+   ",", "\<\"/home/petter/projects/Trainer/data/cities/Bangladesh_Dhaka.png\"\
+\>", ",", \
+"\<\"/home/petter/projects/Trainer/data/cities/Cameroon_Douala.png\"\>", 
+   ",", "\<\"/home/petter/projects/Trainer/data/cities/South \
+Africa_Durban.png\"\>", 
+   ",", "\<\"/home/petter/projects/Trainer/data/cities/Pakistan_Faisalabad.\
+png\"\>", 
+   ",", "\<\"/home/petter/projects/Trainer/data/cities/Brazil_Fortaleza.png\"\
+\>", ",", \
+"\<\"/home/petter/projects/Trainer/data/cities/Ecuador_Guayaquil.png\"\>", 
+   ",", "\<\"/home/petter/projects/Trainer/data/cities/Vietnam_Hanoi.png\"\>",
+    ",", "\<\"/home/petter/projects/Trainer/data/cities/Cuba_Havanna.png\"\>",
+    ",", "\<\"/home/petter/projects/Trainer/data/cities/Vietnam_Ho Chi Minh \
+City.png\"\>", 
+   ",", "\<\"/home/petter/projects/Trainer/data/cities/Hong Kong_Hong \
+Kong.png\"\>", 
+   ",", "\<\"/home/petter/projects/Trainer/data/cities/Nigeria_Ibadan.png\"\>\
+", ",", "\<\"/home/petter/projects/Trainer/data/cities/South \
+Korea_Incheon.png\"\>", 
+   ",", "\<\"/home/petter/projects/Trainer/data/cities/Turkey_Istanbul.png\"\>\
+", ",", "\<\"/home/petter/projects/Trainer/data/cities/Turkey_Izmir.png\"\>", 
+   ",", "\<\"/home/petter/projects/Trainer/data/cities/Indonesia_Jakarta.png\"\
+\>", ",", "\<\"/home/petter/projects/Trainer/data/cities/Saudi \
+Arabia_Jiddah.png\"\>", 
+   ",", "\<\"/home/petter/projects/Trainer/data/cities/South \
+Africa_Johannesburg.png\"\>", 
+   ",", "\<\"/home/petter/projects/Trainer/data/cities/Afghanistan_Kabul.png\"\
+\>", ",", \
+"\<\"/home/petter/projects/Trainer/data/cities/Nigeria_Kano.png\"\>", 
+   ",", "\<\"/home/petter/projects/Trainer/data/cities/Pakistan_Karachi.png\"\
+\>", ",", \
+"\<\"/home/petter/projects/Trainer/data/cities/Ukraine_Kiev.png\"\>", 
+   ",", "\<\"/home/petter/projects/Trainer/data/cities/Democratic Republic \
+Congo_Kinshasa.png\"\>", 
+   ",", "\<\"/home/petter/projects/Trainer/data/cities/Nigeria_Lagos.png\"\>",
+    ",", "\<\"/home/petter/projects/Trainer/data/cities/Pakistan_Lahore.png\"\
+\>", ",", "\<\"/home/petter/projects/Trainer/data/cities/Peru_Lima.png\"\>", 
+   ",", "\<\"/home/petter/projects/Trainer/data/cities/United \
+Kingdom_London.png\"\>", 
+   ",", "\<\"/home/petter/projects/Trainer/data/cities/United States_Los \
+Angeles.png\"\>", 
+   ",", "\<\"/home/petter/projects/Trainer/data/cities/Angola_Luanda.png\"\>",
+    ",", "\<\"/home/petter/projects/Trainer/data/cities/Spain_Madrid.png\"\>",
+    ",", "\<\"/home/petter/projects/Trainer/data/cities/Iran_Mashhad.png\"\>",
+    ",", "\<\"/home/petter/projects/Trainer/data/cities/Indonesia_Medan.png\"\
+\>", ",", \
+"\<\"/home/petter/projects/Trainer/data/cities/Colombia_Medellin.png\"\>", 
+   ",", "\<\"/home/petter/projects/Trainer/data/cities/Australia_Melbourne.\
+png\"\>", 
+   ",", "\<\"/home/petter/projects/Trainer/data/cities/Mexico_Mexico City.png\
+\"\>", ",", \
+"\<\"/home/petter/projects/Trainer/data/cities/Somalia_Mogadishu.png\"\>", 
+   ",", "\<\"/home/petter/projects/Trainer/data/cities/Russia_Moscow.png\"\>",
+    ",", "\<\"/home/petter/projects/Trainer/data/cities/Japan_Nagoya.png\"\>",
+    ",", "\<\"/home/petter/projects/Trainer/data/cities/Kenya_Nairobi.png\"\>\
+", ",", "\<\"/home/petter/projects/Trainer/data/cities/United States_New \
+York.png\"\>", 
+   ",", "\<\"/home/petter/projects/Trainer/data/cities/Japan_Osaka.png\"\>", 
+   ",", "\<\"/home/petter/projects/Trainer/data/cities/France_Paris.png\"\>", 
+   ",", "\<\"/home/petter/projects/Trainer/data/cities/South \
+Africa_Pretoria.png\"\>", 
+   ",", "\<\"/home/petter/projects/Trainer/data/cities/South \
+Korea_Pusan.png\"\>", 
+   ",", "\<\"/home/petter/projects/Trainer/data/cities/North \
+Korea_Pyongyang.png\"\>", 
+   ",", "\<\"/home/petter/projects/Trainer/data/cities/Myanmar_Rangoon.png\"\>\
+", ",", "\<\"/home/petter/projects/Trainer/data/cities/Brazil_Rio De \
+Janeiro.png\"\>", 
+   ",", "\<\"/home/petter/projects/Trainer/data/cities/Saudi \
+Arabia_Riyadh.png\"\>", 
+   ",", "\<\"/home/petter/projects/Trainer/data/cities/Italy_Rome.png\"\>", 
+   ",", "\<\"/home/petter/projects/Trainer/data/cities/Russia_Saint \
+Petersburg.png\"\>", 
+   ",", "\<\"/home/petter/projects/Trainer/data/cities/Brazil_Salvador.png\"\>\
+", ",", "\<\"/home/petter/projects/Trainer/data/cities/Chile_Santiago.png\"\>\
+", ",", "\<\"/home/petter/projects/Trainer/data/cities/Brazil_Sao Paulo.png\"\
+\>", ",", "\<\"/home/petter/projects/Trainer/data/cities/South \
+Korea_Seoul.png\"\>", 
+   ",", "\<\"/home/petter/projects/Trainer/data/cities/China_Shanghai.png\"\>\
+", ",", "\<\"/home/petter/projects/Trainer/data/cities/Singapore_Singapore.\
+png\"\>", 
+   ",", "\<\"/home/petter/projects/Trainer/data/cities/Indonesia_Surabaya.png\
+\"\>", ",", \
+"\<\"/home/petter/projects/Trainer/data/cities/Australia_Sydney.png\"\>", 
+   ",", "\<\"/home/petter/projects/Trainer/data/cities/South \
+Korea_Taegu.png\"\>", 
+   ",", "\<\"/home/petter/projects/Trainer/data/cities/Taiwan_Taipei City.png\
+\"\>", ",", \
+"\<\"/home/petter/projects/Trainer/data/cities/Uzbekistan_Tashkent.png\"\>", 
+   ",", "\<\"/home/petter/projects/Trainer/data/cities/Iran_Tehran.png\"\>", 
+   ",", "\<\"/home/petter/projects/Trainer/data/cities/Japan_Tokyo.png\"\>", 
+   ",", "\<\"/home/petter/projects/Trainer/data/cities/Canada_Toronto.png\"\>\
+"}], "}"}]], "Output",
+ CellChangeTimes->{3.5611142285009537`*^9, 3.561114446174078*^9, 
+  3.561115879042857*^9}]
+}, Open  ]]
+},
+WindowSize->{1366, 751},
+WindowMargins->{{0, Automatic}, {0, Automatic}},
+FrontEndVersion->"8.0 for Linux x86 (64-bit) (February 23, 2011)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 1119, 31, 129, "Input"],
+Cell[1679, 53, 573, 14, 36, "Input"],
+Cell[2255, 69, 1299, 29, 36, "Input"],
+Cell[CellGroupData[{
+Cell[3579, 102, 229, 4, 36, "Input"],
+Cell[3811, 108, 291, 4, 36, "Output"]
+}, Open  ]],
+Cell[4117, 115, 1370, 35, 106, "Input"],
+Cell[CellGroupData[{
+Cell[5512, 154, 64, 1, 36, "Input"],
+Cell[5579, 157, 173, 2, 36, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5789, 164, 4288, 93, 313, "Input"],
+Cell[10080, 259, 7671, 134, 1969, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
